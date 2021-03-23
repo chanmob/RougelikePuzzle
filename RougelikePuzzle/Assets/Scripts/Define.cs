@@ -10,4 +10,9 @@ public static class Define
         Monster,
         None
     }
+
+    public enum WeaponType
+    {
+        None
+    }
 }

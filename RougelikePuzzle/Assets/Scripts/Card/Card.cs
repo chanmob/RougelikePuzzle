@@ -5,8 +5,18 @@ using UnityEngine.UI;
 
 public abstract class Card : MonoBehaviour
 {
+    public enum Moveable
+    {
+        Movable,
+        Immovable,
+        None
+    }
+
     protected const int ONUITIME = 2;
 
+    private CardData _cardData;
+
+    [SerializeField]
     private SpriteRenderer _spriteRender;
 
     public Vector2Int vector;
@@ -15,18 +25,16 @@ public abstract class Card : MonoBehaviour
 
     public int value = 0;
 
+    protected float _clickTime = 0;
+
     public Define.CardType cardType = Define.CardType.None;
+    public Moveable moveable = Moveable.None;
 
-    private void Start()
+    private void Awake()
     {
-        _spriteRender = GetComponent<SpriteRenderer>();
-        _text = GetComponent<Text>();
-        OnStart();
+        _spriteRender = transform.GetChild(0).GetComponent<SpriteRenderer>();
+        _text = GetComponentInChildren<Text>();
     }
-
-    public abstract void OnStart();
-
-    public abstract void OnDie();
 
     public void SetVector(int x, int y)
     {
@@ -38,14 +46,27 @@ public abstract class Card : MonoBehaviour
     {
         this.value = value;
         _text.text = value.ToString();
-
-        if (value <= 0)
-            OnDie();
     }
 
     public void GetDamage(int dmg)
     {
         SetValue(value - dmg);
+    }
+
+    public void SetData(CardData data)
+    {
+        _cardData = data;
+        _spriteRender.sprite = data.cardSprite;
+
+        if (data.isRandom)
+            SetValue(Random.Range(data.randomMinValue, data.randomMaxValue + 1));
+        else
+            SetValue(data.fixValue);
+    }
+
+    protected void ShowInfoUI()
+    {
+
     }
 }
 

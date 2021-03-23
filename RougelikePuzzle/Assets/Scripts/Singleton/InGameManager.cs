@@ -4,10 +4,23 @@ using UnityEngine;
 
 public class InGameManager : Singleton<InGameManager>
 {
-    private Player _player;
+    public GameObject cardsParents;
 
-    public bool CheckDistance(Card card)
+    public Player player { get; private set; }
+
+    private Card[] _cards;
+
+    private int _cardsLen;
+
+    private int _getCoin = 0;
+
+    private void Start()
     {
-        return Mathf.Abs((_player.vector.x + card.vector.x) - (_player.vector.y - _player.vector.y)) == 1; 
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+    }
+
+    public void GetCoin(int coin)
+    {
+        _getCoin += coin;
     }
 }
