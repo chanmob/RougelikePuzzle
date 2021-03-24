@@ -19,7 +19,7 @@ public abstract class Card : MonoBehaviour
     private CardData _cardData;
 
     [SerializeField]
-    private SpriteRenderer _spriteRender;
+    protected SpriteRenderer _spriteRender;
 
     public Vector2Int vector;
 

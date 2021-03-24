@@ -154,6 +154,14 @@ public class CardManager : Singleton<CardManager>
         }
     }
 
+    public void TurnEventCard()
+    {
+        for(int i = 0; i < _cardsLen; i++)
+        {
+            cards[i].TurnEvent();
+        }
+    }
+
     public Card ChangeNewCard(Card card)
     {
         int len = categoryPercent.Length;
