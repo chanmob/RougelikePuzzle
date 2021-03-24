@@ -7,7 +7,7 @@ public class Potion : ObjectCard
 {
     public override void VirtualOnDamage()
     {
-        base.VirtualOnDamage();
+        CardManager.instance.ChangeNewCard(this);
     }
 
     public override void VirtualInteractable()

@@ -12,7 +12,7 @@ public class Trap : ObjectCard
 
     public override void VirtualOnDamage()
     {
-        base.VirtualOnDamage();
+        TriggerTrap();
     }
 
     public virtual void TriggerTrap()

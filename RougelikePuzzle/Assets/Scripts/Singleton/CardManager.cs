@@ -40,7 +40,7 @@ public class CardManager : Singleton<CardManager>
         cards = cardsParents.GetComponentsInChildren<Card>().ToList();
         _cardsLen = cards.Count;
 
-        ResetCard();
+        SetStartCard();
     }
 
     public bool CheckDistance(Card card)
@@ -117,6 +117,19 @@ public class CardManager : Singleton<CardManager>
 
     public void ResetCard()
     {
+        for(int i = 0; i < _cardsLen; i++)
+        {
+            Card card = cards[i];
+
+            if (card is Player)
+                continue;
+
+            ChangeNewCard(card);
+        }
+    }
+
+    public void SetStartCard()
+    {
         int x = -1;
         int y = -2;
 
@@ -143,7 +156,6 @@ public class CardManager : Singleton<CardManager>
 
     public Card ChangeNewCard(Card card)
     {
-        Card returnCard = null;
         int len = categoryPercent.Length;
         int sum = 0;
 
@@ -160,6 +172,7 @@ public class CardManager : Singleton<CardManager>
             if(categoryIdx < categoryPercent[i])
             {
                 selectedIdx = i;
+                break;
             }
             else
             {
@@ -167,41 +180,37 @@ public class CardManager : Singleton<CardManager>
             }
         }
 
-        switch (selectedIdx)
+        card.gameObject.SetActive(false);
+        Card newCard = Instantiate(NewCardType(selectedIdx));
+        newCard.transform.position = new Vector2(card.vector.x * PADDING, card.vector.y * PADDING);
+        newCard.SetData();
+        return newCard;
+    }
+
+    private Card NewCardType(int idx)
+    {
+        switch (idx)
         {
             case 0:
-                returnCard = DataManager.instance.monster;
-                break;
+                return DataManager.instance.monster;
             case 1:
-                returnCard = DataManager.instance.weapon;
-                break;
+                return DataManager.instance.weapon;
             case 2:
-                returnCard = DataManager.instance.potion;
-                break;
+                return DataManager.instance.potion;
             case 3:
-                returnCard = DataManager.instance.coin;
-                break;
+                return DataManager.instance.coin;
             case 4:
-                returnCard = DataManager.instance.changeCardPosition;
-                break;
+                return DataManager.instance.changeCardPosition;
             case 5:
-                returnCard = DataManager.instance.cardReset;
-                break;
+                return DataManager.instance.cardReset;
             case 6:
-                returnCard = DataManager.instance.flameThrower;
-                break;
+                return DataManager.instance.flameThrower;
             case 7:
-                returnCard = DataManager.instance.thorn;
-                break;
+                return DataManager.instance.thorn;
             case 8:
-                returnCard = DataManager.instance.bomb;
-                break;
+                return DataManager.instance.bomb;
         }
 
-        card.gameObject.SetActive(false);
-        Card c = Instantiate(returnCard);
-        c.transform.position = new Vector2(card.vector.x * PADDING, card.vector.y * PADDING);
-        c.SetData();
-        return c;
+        return null;
     }
 }
