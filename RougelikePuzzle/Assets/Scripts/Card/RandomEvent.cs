@@ -1,21 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using DG.Tweening;
 
-public class CardReset : ObjectCard
+public class RandomEvent : ObjectCard
 {
     public override void VirtualInteractable()
     {
-        CardManager.instance.ResetCard();
+        base.VirtualInteractable();
     }
 
     public override void VirtualOnDamage()
     {
+        base.VirtualOnDamage();
     }
 
     public override void VirtualTurnEvent()
     {
-
+        base.VirtualTurnEvent();
     }
 }

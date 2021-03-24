@@ -9,11 +9,11 @@ public class Monster : ObjectCard
     {
         int wd = InGameManager.instance.player.weaponDurability;
         int tempHp = value;
+        InGameManager.instance.player.PlayerGetDamage(tempHp);
 
         if (wd > 0)
         {
             GetDamage(wd);
-            InGameManager.instance.player.DecreaseWeaponDurability(tempHp);
 
             if (value <= 0)
             {
@@ -23,7 +23,6 @@ public class Monster : ObjectCard
         else
         {
             GetDamage(InGameManager.instance.player.value);
-            InGameManager.instance.player.PlayerGetDamage(tempHp);
 
             if (value <= 0)
             {
@@ -33,6 +32,10 @@ public class Monster : ObjectCard
     }
 
     public override void VirtualOnDamage()
+    {
+    }
+
+    public override void VirtualTurnEvent()
     {
     }
 

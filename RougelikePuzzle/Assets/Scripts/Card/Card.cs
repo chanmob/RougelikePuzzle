@@ -55,8 +55,8 @@ public abstract class Card : MonoBehaviour
 
     public void GetDamage(int dmg)
     {
-        SetValue(value - dmg);
         OnDamage();
+        SetValue(value - dmg);
     }
 
     public void SetData(CardData data)

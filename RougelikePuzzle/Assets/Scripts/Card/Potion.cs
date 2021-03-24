@@ -12,11 +12,16 @@ public class Potion : ObjectCard
 
     public override void VirtualInteractable()
     {
-        base.VirtualInteractable();
+        GetPotion();
     }
 
     public override void VirtualTurnEvent()
     {
         base.VirtualTurnEvent();
+    }
+
+    public virtual void GetPotion()
+    {
+
     }
 }

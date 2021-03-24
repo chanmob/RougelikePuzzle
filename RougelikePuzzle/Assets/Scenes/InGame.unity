@@ -131,10 +131,10 @@ GameObject:
   m_Component:
   - component: {fileID: 17562675}
   - component: {fileID: 17562678}
-  - component: {fileID: 17562677}
   - component: {fileID: 17562676}
+  - component: {fileID: 17562677}
   m_Layer: 0
-  m_Name: CardBackground
+  m_Name: CardBackground5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -191,14 +191,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 17562674}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c6a0c400358ca54ba94d7387cd375fd, type: 3}
+  m_Script: {fileID: 11500000, guid: d13d6c4d7e90c03418f55c778541ad88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _spriteRender: {fileID: 0}
   vector: {x: 0, y: 0}
   value: 0
   cardType: 2
-  moveable: 2
+  moveable: 0
 --- !u!212 &17562678
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -905,7 +905,7 @@ GameObject:
   - component: {fileID: 322883152}
   - component: {fileID: 322883151}
   m_Layer: 0
-  m_Name: CardBackground
+  m_Name: CardBackground2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -969,7 +969,7 @@ MonoBehaviour:
   vector: {x: 0, y: 0}
   value: 0
   cardType: 2
-  moveable: 2
+  moveable: 1
 --- !u!212 &322883153
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1111,7 +1111,7 @@ GameObject:
   - component: {fileID: 368967028}
   - component: {fileID: 368967027}
   m_Layer: 0
-  m_Name: CardBackground
+  m_Name: CardBackground7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1175,7 +1175,7 @@ MonoBehaviour:
   vector: {x: 0, y: 0}
   value: 0
   cardType: 2
-  moveable: 2
+  moveable: 1
 --- !u!212 &368967029
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1724,6 +1724,9 @@ MonoBehaviour:
   dontDestroyOnLoad: 0
   tempData: {fileID: 11400000, guid: 704e3909252faf6448a5bf54980fc75f, type: 2}
   cardsParents: {fileID: 1472939623}
+  cards: []
+  r: {fileID: 0}
+  c: {fileID: 0}
 --- !u!4 &690997349
 Transform:
   m_ObjectHideFlags: 0
@@ -1751,7 +1754,7 @@ GameObject:
   - component: {fileID: 693521256}
   - component: {fileID: 693521255}
   m_Layer: 0
-  m_Name: CardBackground
+  m_Name: CardBackground6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1815,7 +1818,7 @@ MonoBehaviour:
   vector: {x: 0, y: 0}
   value: 0
   cardType: 2
-  moveable: 2
+  moveable: 1
 --- !u!212 &693521257
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2377,7 +2380,7 @@ GameObject:
   - component: {fileID: 947562582}
   - component: {fileID: 947562581}
   m_Layer: 0
-  m_Name: CardBackground
+  m_Name: CardBackground4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2441,7 +2444,7 @@ MonoBehaviour:
   vector: {x: 0, y: 0}
   value: 0
   cardType: 2
-  moveable: 2
+  moveable: 1
 --- !u!212 &947562583
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2786,8 +2789,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dontDestroyOnLoad: 0
-  _bgmAudioSource: {fileID: 0}
-  _sfxAudioSource: {fileID: 0}
+  _bgmAudioSource: {fileID: 1281711692}
+  _sfxAudioSource: {fileID: 107474799}
 --- !u!4 &1072224183
 Transform:
   m_ObjectHideFlags: 0
@@ -2817,7 +2820,7 @@ GameObject:
   - component: {fileID: 1111601555}
   - component: {fileID: 1111601554}
   m_Layer: 0
-  m_Name: CardBackground
+  m_Name: CardBackground3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2881,7 +2884,7 @@ MonoBehaviour:
   vector: {x: 0, y: 0}
   value: 0
   cardType: 2
-  moveable: 2
+  moveable: 1
 --- !u!212 &1111601556
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3865,7 +3868,7 @@ GameObject:
   - component: {fileID: 2020171472}
   - component: {fileID: 2020171471}
   m_Layer: 0
-  m_Name: CardBackground
+  m_Name: CardBackground8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3929,7 +3932,7 @@ MonoBehaviour:
   vector: {x: 0, y: 0}
   value: 0
   cardType: 2
-  moveable: 2
+  moveable: 1
 --- !u!212 &2020171473
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3993,7 +3996,7 @@ GameObject:
   - component: {fileID: 2039086200}
   - component: {fileID: 2039086199}
   m_Layer: 0
-  m_Name: CardBackground
+  m_Name: CardBackground1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4057,7 +4060,7 @@ MonoBehaviour:
   vector: {x: 0, y: 0}
   value: 0
   cardType: 2
-  moveable: 2
+  moveable: 1
 --- !u!212 &2039086201
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -53,6 +53,13 @@ public class Player : Card
 
             if (weaponDurability <= 0)
             {
+                value -= weaponDurability;
+
+                if (value <= 0)
+                {
+
+                }
+
                 weaponDurability = 0;
                 weaponType = Define.WeaponType.None;
             }

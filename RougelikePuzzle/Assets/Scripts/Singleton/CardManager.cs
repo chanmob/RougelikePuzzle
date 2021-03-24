@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class CardManager : Singleton<CardManager>
 {
@@ -10,14 +11,14 @@ public class CardManager : Singleton<CardManager>
 
     public GameObject cardsParents;
 
-    private Card[] _cards;
+    public List<Card> cards;
 
     private int _cardsLen;
 
     private void Start()
     {
-        _cards = cardsParents.GetComponentsInChildren<Card>();
-        _cardsLen = _cards.Length;
+        cards = cardsParents.GetComponentsInChildren<Card>().ToList();
+        _cardsLen = cards.Count;
 
         ResetCard();
     }
@@ -87,8 +88,8 @@ public class CardManager : Singleton<CardManager>
     {
         for (int i = 0; i < _cardsLen; i++)
         {
-            if (_cards[i].vector.x == x && _cards[i].vector.y == y)
-                return _cards[i];
+            if (cards[i].vector.x == x && cards[i].vector.y == y)
+                return cards[i];
         }
 
         return null;
@@ -101,7 +102,7 @@ public class CardManager : Singleton<CardManager>
 
         for (int i = 0; i < _cardsLen; i++)
         {
-            Card card = _cards[i];
+            Card card = cards[i];
 
             y++;
             if (y > 1)
