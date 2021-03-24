@@ -7,8 +7,28 @@ public class CardManager : Singleton<CardManager>
 {
     public const float PADDING = 1.5f;
 
-    public CardData tempData;
+    [Header("CategoryPercent")]
+    public int[] categoryPercent;
 
+    [Header("Percent")]
+    public int[] monsterPercent;
+
+    [Header("CategoryPercent")]
+    public int[] weaponPercent;
+
+    [Header("CategoryPercent")]
+    public int[] potionPercent;
+
+    [Header("CoinPercent")]
+    public int[] coinPercent;
+
+    [Header("RandomEventPercent")]
+    public int[] randomeventPercent;
+
+    [Header("TrapPercent")]
+    public int[] trapPercent;
+
+    [Space(50f)]
     public GameObject cardsParents;
 
     public List<Card> cards;
@@ -114,7 +134,7 @@ public class CardManager : Singleton<CardManager>
             if (card is Player)
                 continue;
 
-            card.SetData(tempData);
+            card.SetData();
             card.vector.x = x;
             card.vector.y = y;
             card.transform.position = new Vector2(card.vector.x * PADDING, card.vector.y * PADDING);
@@ -123,12 +143,65 @@ public class CardManager : Singleton<CardManager>
 
     public Card ChangeNewCard(Card card)
     {
-        //카드 목록 확률에 따라 카드 목록 선택
+        Card returnCard = null;
+        int len = categoryPercent.Length;
+        int sum = 0;
 
-        //카드 목록에 따라 세부적인 것 결정
+        for(int i = 0; i < len; i++)
+        {
+            sum += categoryPercent[i];
+        }
+         
+        int categoryIdx = Random.Range(0, sum);
+        int selectedIdx = -1;
 
-        //그 카드 리턴
+        for(int i = 0; i < len; i++)
+        {
+            if(categoryIdx < categoryPercent[i])
+            {
+                selectedIdx = i;
+            }
+            else
+            {
+                categoryIdx -= categoryPercent[i];
+            }
+        }
 
-        return null;
+        switch (selectedIdx)
+        {
+            case 0:
+                returnCard = DataManager.instance.monster;
+                break;
+            case 1:
+                returnCard = DataManager.instance.weapon;
+                break;
+            case 2:
+                returnCard = DataManager.instance.potion;
+                break;
+            case 3:
+                returnCard = DataManager.instance.coin;
+                break;
+            case 4:
+                returnCard = DataManager.instance.changeCardPosition;
+                break;
+            case 5:
+                returnCard = DataManager.instance.cardReset;
+                break;
+            case 6:
+                returnCard = DataManager.instance.flameThrower;
+                break;
+            case 7:
+                returnCard = DataManager.instance.thorn;
+                break;
+            case 8:
+                returnCard = DataManager.instance.bomb;
+                break;
+        }
+
+        card.gameObject.SetActive(false);
+        Card c = Instantiate(returnCard);
+        c.transform.position = new Vector2(card.vector.x * PADDING, card.vector.y * PADDING);
+        c.SetData();
+        return c;
     }
 }

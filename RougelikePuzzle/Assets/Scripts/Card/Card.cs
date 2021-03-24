@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public abstract class Card : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public abstract class Card : MonoBehaviour
 
     protected const int ONUITIME = 2;
 
+    [SerializeField]
     private CardData _cardData;
 
     [SerializeField]
@@ -38,6 +40,11 @@ public abstract class Card : MonoBehaviour
         _text = GetComponentInChildren<Text>();
     }
 
+    private void Start()
+    {
+        _spriteRender.sprite = _cardData.cardSprite;
+    }
+
     public void SetVector(int x, int y)
     {
         vector.x = x;
@@ -60,22 +67,30 @@ public abstract class Card : MonoBehaviour
         SetValue(value - dmg);
     }
 
-    public void SetData(CardData data)
+    public void SetData()
     {
-        _cardData = data;
-        _spriteRender.sprite = data.cardSprite;
+        //_cardData = data;
+        //_spriteRender.sprite = data.cardSprite;
 
-        if (data.isRandom)
-            SetValue(Random.Range(data.randomMinValue, data.randomMaxValue + 1));
+        if (_cardData.isRandom)
+            SetValue(Random.Range(_cardData.randomMinValue, _cardData.randomMaxValue + 1));
         else
-            SetValue(data.fixValue);
+            SetValue(_cardData.fixValue);
 
         maxValue = value;
+
+        ScaleAnimation();
     }
 
     protected void ShowInfoUI()
     {
 
+    }
+
+    public void ScaleAnimation()
+    {
+        transform.localScale = new Vector2(0, 0);
+        transform.DOScale(1, 0.5f).SetEase(Ease.OutBack);
     }
 }
 

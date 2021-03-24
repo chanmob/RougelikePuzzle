@@ -42,6 +42,7 @@ public class Monster : ObjectCard
 
     private void Die()
     {
-
+        CardManager.instance.ChangeNewCard(this);
+        ScaleAnimation();
     }
 }

@@ -53,6 +53,11 @@ public class ObjectCard : Card
                     break;
                 case Moveable.Movable:
                     InGameManager.instance.player.transform.DOMove(transform.position, 0.5f).SetEase(Ease.InBack).OnComplete(() => {
+
+                        Vector2Int tempVec = vector;
+                        SetVector(InGameManager.instance.player.vector.x, InGameManager.instance.player.vector.y);
+                        InGameManager.instance.player.SetVector(tempVec.x, tempVec.y);
+
                         VirtualInteractable();
                     });
                     break;

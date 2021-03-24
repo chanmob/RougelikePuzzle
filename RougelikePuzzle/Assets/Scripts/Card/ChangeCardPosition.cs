@@ -27,6 +27,7 @@ public class ChangeCardPosition : ObjectCard
             card.vector.x = x;
             card.vector.y = y;
             card.transform.position = new Vector2(card.vector.x * CardManager.PADDING, card.vector.y * CardManager.PADDING);
+            card.ScaleAnimation();
 
             y++;
             if (y > 1)

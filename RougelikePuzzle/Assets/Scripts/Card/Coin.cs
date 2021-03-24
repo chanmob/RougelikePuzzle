@@ -7,6 +7,7 @@ public class Coin : ObjectCard
 {
     public override void VirtualInteractable()
     {
+        CardManager.instance.ChangeNewCard(this);
     }
 
     public override void VirtualOnDamage()
