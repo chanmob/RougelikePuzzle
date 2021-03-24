@@ -38,6 +38,9 @@ public abstract class Card : MonoBehaviour
     {
         _spriteRender = transform.GetChild(0).GetComponent<SpriteRenderer>();
         _text = GetComponentInChildren<Text>();
+
+        Canvas canvas = GetComponentInChildren<Canvas>();
+        canvas.worldCamera = Camera.main;
     }
 
     private void Start()
@@ -78,6 +81,14 @@ public abstract class Card : MonoBehaviour
             SetValue(_cardData.fixValue);
 
         maxValue = value;
+        if (maxValue == 0)
+        {
+            _text.gameObject.SetActive(false);
+        }
+        else
+        {
+            _text.gameObject.SetActive(true);
+        }
 
         ScaleAnimation();
     }
