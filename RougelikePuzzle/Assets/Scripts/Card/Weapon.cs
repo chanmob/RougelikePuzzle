@@ -9,8 +9,7 @@ public class Weapon : ObjectCard
 
     public override void VirtualInteractable()
     {
-        InGameManager.instance.player.weaponType = weaponType;
-        InGameManager.instance.player.weaponDurability = value;
+        InGameManager.instance.player.PlayerGetWeapon(weaponType, value);
     }
 
     public override void VirtualOnDamage()

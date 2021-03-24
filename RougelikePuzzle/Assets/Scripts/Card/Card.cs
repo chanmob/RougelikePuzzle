@@ -21,8 +21,9 @@ public abstract class Card : MonoBehaviour
 
     public Vector2Int vector;
 
-    private Text _text;
+    protected Text _text;
 
+    public int maxValue = 0;
     public int value = 0;
     protected int turnCount;
 
@@ -68,6 +69,8 @@ public abstract class Card : MonoBehaviour
             SetValue(Random.Range(data.randomMinValue, data.randomMaxValue + 1));
         else
             SetValue(data.fixValue);
+
+        maxValue = value;
     }
 
     protected void ShowInfoUI()

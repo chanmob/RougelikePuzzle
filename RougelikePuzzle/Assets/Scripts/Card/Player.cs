@@ -11,6 +11,13 @@ public class Player : Card
 
     [SerializeField]
     private Text _text_Durability;
+    [SerializeField]
+    private SpriteRenderer _weaponSprite;
+
+    private void Start()
+    {
+        maxValue = value;
+    }
 
     public override void OnDamage()
     {
@@ -34,26 +41,17 @@ public class Player : Card
         }
     }
 
-    public void DecreaseWeaponDurability(int damage)
-    {
-        weaponDurability -= damage;
-
-        if(weaponDurability <= 0)
-        {
-            weaponDurability = 0;
-            weaponType = Define.WeaponType.None;
-        }   
-    }
-
     public void PlayerGetDamage(int damage)
     {
         if(weaponDurability > 0)
         {
             weaponDurability -= damage;
+            _text_Durability.text = weaponDurability.ToString();
 
             if (weaponDurability <= 0)
             {
                 value -= weaponDurability;
+                _text.text = string.Format("{0}/{1}", value, maxValue);
 
                 if (value <= 0)
                 {
@@ -62,16 +60,26 @@ public class Player : Card
 
                 weaponDurability = 0;
                 weaponType = Define.WeaponType.None;
+                _text_Durability.gameObject.SetActive(false);
             }
         }
         else
         {
             value -= damage;
+            _text.text = string.Format("{0}/{1}", value, maxValue);
 
-            if(value <= 0)
+            if (value <= 0)
             {
 
             }
         }
+    }
+
+    public void PlayerGetWeapon(Define.WeaponType weaponType, int durability)
+    {
+        this.weaponType = weaponType;
+        weaponDurability = durability;
+        _text_Durability.text = weaponDurability.ToString();
+        _text_Durability.gameObject.SetActive(true);
     }
 }
