@@ -12,6 +12,15 @@ public class Player : Card
     [SerializeField]
     private Text _text_Durability;
 
+    public override void OnDamage()
+    {
+    }
+
+    public override void TurnEvent()
+    {
+    }
+
+
     public void OnMouseDown()
     {
         _clickTime = Time.time;
@@ -34,5 +43,28 @@ public class Player : Card
             weaponDurability = 0;
             weaponType = Define.WeaponType.None;
         }   
+    }
+
+    public void PlayerGetDamage(int damage)
+    {
+        if(weaponDurability > 0)
+        {
+            weaponDurability -= damage;
+
+            if (weaponDurability <= 0)
+            {
+                weaponDurability = 0;
+                weaponType = Define.WeaponType.None;
+            }
+        }
+        else
+        {
+            value -= damage;
+
+            if(value <= 0)
+            {
+
+            }
+        }
     }
 }

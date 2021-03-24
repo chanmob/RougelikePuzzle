@@ -24,6 +24,7 @@ public abstract class Card : MonoBehaviour
     private Text _text;
 
     public int value = 0;
+    protected int turnCount;
 
     protected float _clickTime = 0;
 
@@ -48,9 +49,14 @@ public abstract class Card : MonoBehaviour
         _text.text = value.ToString();
     }
 
+    public abstract void OnDamage();
+
+    public abstract void TurnEvent();
+
     public void GetDamage(int dmg)
     {
         SetValue(value - dmg);
+        OnDamage();
     }
 
     public void SetData(CardData data)

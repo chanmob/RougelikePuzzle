@@ -8,4 +8,14 @@ public class SoundManager : Singleton<SoundManager>
     private AudioSource _bgmAudioSource;
     [SerializeField]
     private AudioSource _sfxAudioSource;
+
+    public void PlayBGM(string clipName, float volume)
+    {
+
+    }
+
+    public void PlaySFX(string clipName, float volume)
+    {
+
+    }
 }

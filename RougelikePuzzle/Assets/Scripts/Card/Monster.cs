@@ -3,48 +3,37 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class Monster : Card
+public class Monster : ObjectCard
 {
-    public void OnMouseDown()
+    public override void VirtualInteractable()
     {
-        _clickTime = Time.time;
-    }
+        int wd = InGameManager.instance.player.weaponDurability;
+        int tempHp = value;
 
-    public void OnMouseUp()
-    {
-        if(Time.time - _clickTime < ONUITIME)
+        if (wd > 0)
         {
-            if (!CardManager.instance.CheckDistance(this))
-                return;
+            GetDamage(wd);
+            InGameManager.instance.player.DecreaseWeaponDurability(tempHp);
 
-            int wd = InGameManager.instance.player.weaponDurability;
-            int tempHp = value;
-
-            if (wd > 0)
+            if (value <= 0)
             {
-                GetDamage(wd);
-                InGameManager.instance.player.DecreaseWeaponDurability(tempHp);
-
-                if (value <= 0)
-                {
-                    Die();
-                }
-            }
-            else
-            {
-                GetDamage(InGameManager.instance.player.value);
-                InGameManager.instance.player.GetDamage(tempHp);
-
-                if (value <= 0)
-                {
-                    Die();
-                }
+                Die();
             }
         }
         else
         {
-            ShowInfoUI();
+            GetDamage(InGameManager.instance.player.value);
+            InGameManager.instance.player.PlayerGetDamage(tempHp);
+
+            if (value <= 0)
+            {
+                Die();
+            }
         }
+    }
+
+    public override void VirtualOnDamage()
+    {
     }
 
     private void Die()

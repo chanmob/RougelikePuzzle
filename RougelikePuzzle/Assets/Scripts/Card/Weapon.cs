@@ -3,30 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class Weapon : Card
+public class Weapon : ObjectCard
 {
     public Define.WeaponType weaponType = Define.WeaponType.None;
 
-    public void OnMouseDown()
+    public override void VirtualInteractable()
     {
-        _clickTime = Time.time;
+        InGameManager.instance.player.weaponType = weaponType;
+        InGameManager.instance.player.weaponDurability = value;
     }
 
-    public void OnMouseUp()
+    public override void VirtualOnDamage()
     {
-        if (Time.time - _clickTime < ONUITIME)
-        {
-            if (!CardManager.instance.CheckDistance(this))
-                return;
+        base.VirtualOnDamage();
+    }
 
-            InGameManager.instance.player.transform.DOMove(transform.position, 0.5f).SetEase(Ease.InBack).OnComplete(() => {
-                InGameManager.instance.player.weaponType = weaponType;
-                InGameManager.instance.player.weaponDurability = value;
-            });
-        }
-        else
-        {
-            ShowInfoUI();
-        }
+    public override void VirtualTurnEvent()
+    {
+        base.VirtualTurnEvent();
     }
 }
