@@ -120,4 +120,15 @@ public class CardManager : Singleton<CardManager>
             card.transform.position = new Vector2(card.vector.x * PADDING, card.vector.y * PADDING);
         }
     }
+
+    public Card ChangeNewCard(Card card)
+    {
+        //카드 목록 확률에 따라 카드 목록 선택
+
+        //카드 목록에 따라 세부적인 것 결정
+
+        //그 카드 리턴
+
+        return null;
+    }
 }

@@ -23,4 +23,12 @@ public class InGameManager : Singleton<InGameManager>
     {
         _getCoin += coin;
     }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene(Application.loadedLevel);
+        }
+    }
 }
