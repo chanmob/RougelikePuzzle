@@ -8,5 +8,7 @@ public class Thorn : Trap
     {
         if(turnCount % 2 == 0)
             InGameManager.instance.player.PlayerGetDamage(value);
+
+        CardManager.instance.ChangeNewCard(this);
     }
 }

@@ -32,6 +32,7 @@ public class CardManager : Singleton<CardManager>
     public GameObject cardsParents;
 
     public List<Card> cards;
+    public Queue<Card> cardQueue = new Queue<Card>();
 
     private int _cardsLen;
 
@@ -39,6 +40,11 @@ public class CardManager : Singleton<CardManager>
     {
         cards = cardsParents.GetComponentsInChildren<Card>().ToList();
         _cardsLen = cards.Count;
+
+        for(int i = 0; i < _cardsLen; i++)
+        {
+            cardQueue.Enqueue(cards[i]);
+        }
 
         SetStartCard();
     }
@@ -117,14 +123,21 @@ public class CardManager : Singleton<CardManager>
 
     public void ResetCard()
     {
-        for(int i = 0; i < _cardsLen; i++)
+        for (int i = 0; i < _cardsLen; i++)
         {
-            Card card = cards[i];
+            //Card card = cards[i];
+            Card c = cardQueue.Peek();
 
-            if (card is Player)
+            if (c is Player)
+            {
+                cardQueue.Dequeue();
+                cardQueue.Enqueue(c);
+                //test.RemoveFirst();
+                //test.AddLast(card);
                 continue;
+            }
 
-            ChangeNewCard(card);
+            ChangeNewCard(c);
         }
     }
 
@@ -188,10 +201,19 @@ public class CardManager : Singleton<CardManager>
             }
         }
 
+        cardQueue.Dequeue();
+        //test.RemoveFirst();
+        //cards.Remove(card);
         card.gameObject.SetActive(false);
-        Card newCard = Instantiate(NewCardType(selectedIdx));
+        Card newCard = NewCardType(selectedIdx);
+        newCard.SetVector(card.vector.x, card.vector.y);
+        newCard.transform.SetParent(cardsParents.transform);
         newCard.transform.position = new Vector2(card.vector.x * PADDING, card.vector.y * PADDING);
+        newCard.gameObject.SetActive(true);
         newCard.SetData();
+        //test.AddLast(newCard);
+        cardQueue.Enqueue(newCard);
+        //cards.Add(newCard);
         return newCard;
     }
 
@@ -200,23 +222,23 @@ public class CardManager : Singleton<CardManager>
         switch (idx)
         {
             case 0:
-                return DataManager.instance.monster;
+                return ObjectPoolManager.instance.GetMonster();
             case 1:
-                return DataManager.instance.weapon;
+                return ObjectPoolManager.instance.GetWeapon();
             case 2:
-                return DataManager.instance.potion;
+                return ObjectPoolManager.instance.GetPotion();
             case 3:
-                return DataManager.instance.coin;
+                return ObjectPoolManager.instance.GetCoin();
             case 4:
-                return DataManager.instance.changeCardPosition;
+                return ObjectPoolManager.instance.GetChangeCardPosition();
             case 5:
-                return DataManager.instance.cardReset;
+                return ObjectPoolManager.instance.GetCardReset();
             case 6:
-                return DataManager.instance.flameThrower;
+                return ObjectPoolManager.instance.GetFlameThrower();
             case 7:
-                return DataManager.instance.thorn;
+                return ObjectPoolManager.instance.GetThorn();
             case 8:
-                return DataManager.instance.bomb;
+                return ObjectPoolManager.instance.GetBomb();
         }
 
         return null;

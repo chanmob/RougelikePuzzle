@@ -22,7 +22,7 @@ public class DataManager : Singleton<DataManager>
 
     public Monster monster;
 
-    public Potion potion;
+    public RedPotion potion;
 
     public void TempVoid()
     {
@@ -119,7 +119,7 @@ public class DataManager : Singleton<DataManager>
     {
         if (obj.Status == AsyncOperationStatus.Succeeded)
         {
-            potion = obj.Result.GetComponent<Potion>();
+            potion = obj.Result.GetComponent<RedPotion>();
         }
     }
 }

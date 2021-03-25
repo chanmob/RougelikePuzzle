@@ -13,6 +13,7 @@ public class Potion : ObjectCard
     public override void VirtualInteractable()
     {
         GetPotion();
+        CardManager.instance.ChangeNewCard(this);
     }
 
     public override void VirtualTurnEvent()
