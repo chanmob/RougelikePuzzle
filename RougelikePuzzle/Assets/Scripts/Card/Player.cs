@@ -27,6 +27,9 @@ public class Player : Card
     {
     }
 
+    public override void ReturnCard()
+    {
+    }
 
     public void OnMouseDown()
     {

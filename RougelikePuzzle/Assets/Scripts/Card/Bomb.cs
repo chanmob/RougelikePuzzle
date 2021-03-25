@@ -19,6 +19,11 @@ public class Bomb : ObjectCard
         base.VirtualTurnEvent();
     }
 
+    public override void VirtualReturnCard()
+    {
+        ObjectPoolManager.instance.ReturnBomb(this);
+    }
+
     public void BombExplosion()
     {
         Debug.Log("BombExplosion");

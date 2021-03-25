@@ -15,6 +15,11 @@ public class ObjectCard : Card
     {
         VirtualTurnEvent();
     }
+
+    public override void ReturnCard()
+    {
+        VirtualReturnCard();
+    }
     #endregion
 
     #region Virtual
@@ -29,6 +34,11 @@ public class ObjectCard : Card
     }
 
     public virtual void VirtualTurnEvent()
+    {
+
+    }
+
+    public virtual void VirtualReturnCard()
     {
 
     }

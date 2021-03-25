@@ -12,5 +12,11 @@ public class Coin : ObjectCard
 
     public override void VirtualOnDamage()
     {
+
+    }
+
+    public override void VirtualReturnCard()
+    {
+        ObjectPoolManager.instance.ReturnCoin(this);
     }
 }

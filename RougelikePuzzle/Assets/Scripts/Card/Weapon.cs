@@ -21,4 +21,9 @@ public class Weapon : ObjectCard
     {
         base.VirtualTurnEvent();
     }
+
+    public override void VirtualReturnCard()
+    {
+        ObjectPoolManager.instance.ReturnWeapon(this);
+    }
 }

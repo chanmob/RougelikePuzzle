@@ -7,7 +7,6 @@ public class CardReset : ObjectCard
 {
     public override void VirtualInteractable()
     {
-        //CardManager.instance.ChangeNewCard(this);
         CardManager.instance.ResetCard();
         ObjectPoolManager.instance.ReturnCardReset(this);
     }
@@ -19,5 +18,10 @@ public class CardReset : ObjectCard
     public override void VirtualTurnEvent()
     {
 
+    }
+
+    public override void VirtualReturnCard()
+    {
+        ObjectPoolManager.instance.ReturnCardReset(this);
     }
 }

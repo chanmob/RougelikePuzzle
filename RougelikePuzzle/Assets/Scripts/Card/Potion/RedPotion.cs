@@ -8,4 +8,9 @@ public class RedPotion : Potion
     {
 
     }
+
+    public override void VirtualReturnCard()
+    {
+        ObjectPoolManager.instance.ReturnRedPotion(this);
+    }
 }

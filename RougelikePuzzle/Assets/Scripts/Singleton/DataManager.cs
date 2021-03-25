@@ -30,7 +30,7 @@ public class DataManager : Singleton<DataManager>
     }
 
 
-    private void Start()
+    protected override void OnAwake()
     {
         Addressables.LoadAssetAsync<GameObject>("Bomb").Completed += AddressableToBomb;
         Addressables.LoadAssetAsync<GameObject>("CardReset").Completed += AddressableToCardReset;

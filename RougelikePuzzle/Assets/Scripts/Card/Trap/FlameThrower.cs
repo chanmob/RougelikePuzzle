@@ -52,4 +52,9 @@ public class FlameThrower : Trap
         turnCount++;
         _spriteRender.transform.DORotate(new Vector3(0, 0, (turnCount % 4) * 90), 0.5f);
     }
+
+    public override void VirtualReturnCard()
+    {
+        ObjectPoolManager.instance.ReturnFlameThrower(this);
+    }
 }

@@ -40,6 +40,11 @@ public class Monster : ObjectCard
     {
     }
 
+    public override void VirtualReturnCard()
+    {
+        ObjectPoolManager.instance.ReturnMonster(this);
+    }
+
     private void Die()
     {
         CardManager.instance.ChangeNewCard(this);

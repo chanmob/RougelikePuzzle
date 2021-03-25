@@ -64,6 +64,8 @@ public abstract class Card : MonoBehaviour
 
     public abstract void TurnEvent();
 
+    public abstract void ReturnCard();
+
     public void GetDamage(int dmg)
     {
         OnDamage();
@@ -72,9 +74,6 @@ public abstract class Card : MonoBehaviour
 
     public void SetData()
     {
-        //_cardData = data;
-        //_spriteRender.sprite = data.cardSprite;
-
         if (_cardData.isRandom)
             SetValue(Random.Range(_cardData.randomMinValue, _cardData.randomMaxValue + 1));
         else

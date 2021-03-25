@@ -31,15 +31,14 @@ public class CardManager : Singleton<CardManager>
     [Space(50f)]
     public GameObject cardsParents;
 
-    public List<Card> cards;
     public Queue<Card> cardQueue = new Queue<Card>();
 
     private int _cardsLen;
 
     private void Start()
     {
-        cards = cardsParents.GetComponentsInChildren<Card>().ToList();
-        _cardsLen = cards.Count;
+        var cards = cardsParents.GetComponentsInChildren<Card>();
+        _cardsLen = cards.Length;
 
         for(int i = 0; i < _cardsLen; i++)
         {
@@ -112,10 +111,12 @@ public class CardManager : Singleton<CardManager>
 
     public Card GetCard(int x, int y)
     {
-        for (int i = 0; i < _cardsLen; i++)
+        foreach(Card card in cardQueue)
         {
-            if (cards[i].vector.x == x && cards[i].vector.y == y)
-                return cards[i];
+            if(card.vector.x == x && card.vector.y == y)
+            {
+                return card;
+            }
         }
 
         return null;
@@ -125,15 +126,12 @@ public class CardManager : Singleton<CardManager>
     {
         for (int i = 0; i < _cardsLen; i++)
         {
-            //Card card = cards[i];
             Card c = cardQueue.Peek();
 
             if (c is Player)
             {
                 cardQueue.Dequeue();
                 cardQueue.Enqueue(c);
-                //test.RemoveFirst();
-                //test.AddLast(card);
                 continue;
             }
 
@@ -148,7 +146,7 @@ public class CardManager : Singleton<CardManager>
 
         for (int i = 0; i < _cardsLen; i++)
         {
-            Card card = cards[i];
+            Card c = cardQueue.Peek();
 
             y++;
             if (y > 1)
@@ -157,21 +155,23 @@ public class CardManager : Singleton<CardManager>
                 y = -1;
             }
 
-            if (card is Player)
+            if (c is Player)
+            {
+                cardQueue.Dequeue();
+                cardQueue.Enqueue(c);
                 continue;
+            }
 
-            card.SetData();
-            card.vector.x = x;
-            card.vector.y = y;
-            card.transform.position = new Vector2(card.vector.x * PADDING, card.vector.y * PADDING);
+            c.SetVector(x, y);
+            ChangeNewCard(c);
         }
     }
 
     public void TurnEventCard()
     {
-        for(int i = 0; i < _cardsLen; i++)
+        foreach(Card card in cardQueue)
         {
-            cards[i].TurnEvent();
+            card.TurnEvent();
         }
     }
 
@@ -202,18 +202,16 @@ public class CardManager : Singleton<CardManager>
         }
 
         cardQueue.Dequeue();
-        //test.RemoveFirst();
-        //cards.Remove(card);
-        card.gameObject.SetActive(false);
+        card.ReturnCard();
+
         Card newCard = NewCardType(selectedIdx);
         newCard.SetVector(card.vector.x, card.vector.y);
         newCard.transform.SetParent(cardsParents.transform);
         newCard.transform.position = new Vector2(card.vector.x * PADDING, card.vector.y * PADDING);
         newCard.gameObject.SetActive(true);
         newCard.SetData();
-        //test.AddLast(newCard);
+        
         cardQueue.Enqueue(newCard);
-        //cards.Add(newCard);
         return newCard;
     }
 
@@ -226,7 +224,7 @@ public class CardManager : Singleton<CardManager>
             case 1:
                 return ObjectPoolManager.instance.GetWeapon();
             case 2:
-                return ObjectPoolManager.instance.GetPotion();
+                return ObjectPoolManager.instance.GetRedPotion();
             case 3:
                 return ObjectPoolManager.instance.GetCoin();
             case 4:

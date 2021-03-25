@@ -230,7 +230,7 @@ public class ObjectPoolManager : Singleton<ObjectPoolManager>
     #endregion
 
     #region Potion
-    private void MakePotion(int count)
+    private void MakeRedPotion(int count)
     {
         for (int i = 0; i < count; i++)
         {
@@ -242,17 +242,17 @@ public class ObjectPoolManager : Singleton<ObjectPoolManager>
         }
     }
 
-    public RedPotion GetPotion()
+    public RedPotion GetRedPotion()
     {
         int cnt = _stack_RedPotion.Count;
 
         if (cnt == 0)
-            MakePotion(1);
+            MakeRedPotion(1);
 
         return _stack_RedPotion.Pop();
     }
 
-    public void ReturnPotion(RedPotion card)
+    public void ReturnRedPotion(RedPotion card)
     {
         if (card.gameObject.activeSelf)
             card.gameObject.SetActive(false);
