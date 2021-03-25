@@ -11,4 +11,9 @@ public class Thorn : Trap
 
         CardManager.instance.ChangeNewCard(this);
     }
+
+    public override void VirtualReturnCard()
+    {
+        ObjectPoolManager.instance.ReturnThorn(this);
+    }
 }

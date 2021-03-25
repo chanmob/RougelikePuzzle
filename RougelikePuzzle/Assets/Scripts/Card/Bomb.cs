@@ -7,11 +7,13 @@ public class Bomb : ObjectCard
     public override void VirtualInteractable()
     {
         BombExplosion();
+        CardManager.instance.ChangeNewCard(this);
     }
 
     public override void VirtualOnDamage()
     {
         BombExplosion();
+        CardManager.instance.ChangeNewCard(this);
     }
 
     public override void VirtualTurnEvent()

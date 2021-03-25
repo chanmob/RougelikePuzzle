@@ -45,6 +45,8 @@ public class FlameThrower : Trap
                 }
                 break;
         }
+
+        CardManager.instance.ChangeNewCard(this);
     }
 
     public override void VirtualTurnEvent()

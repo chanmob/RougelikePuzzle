@@ -10,11 +10,12 @@ public class Weapon : ObjectCard
     public override void VirtualInteractable()
     {
         InGameManager.instance.player.PlayerGetWeapon(weaponType, value);
+        CardManager.instance.ChangeNewCard(this);
     }
 
     public override void VirtualOnDamage()
     {
-        base.VirtualOnDamage();
+        CardManager.instance.ChangeNewCard(this);
     }
 
     public override void VirtualTurnEvent()

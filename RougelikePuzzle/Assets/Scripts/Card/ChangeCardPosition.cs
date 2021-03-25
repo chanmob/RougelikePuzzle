@@ -27,9 +27,8 @@ public class ChangeCardPosition : ObjectCard
         {
             Card card = cards[i];
 
-            card.vector.x = x;
-            card.vector.y = y;
-            card.transform.position = new Vector2(card.vector.x * CardManager.PADDING, card.vector.y * CardManager.PADDING);
+            card.SetVector(x, y);
+            card.transform.position = new Vector2(x * CardManager.PADDING, y * CardManager.PADDING);
             card.ScaleAnimation();
             CardManager.instance.cardQueue.Enqueue(card);
 
@@ -39,7 +38,10 @@ public class ChangeCardPosition : ObjectCard
                 x++;
                 y = -1;
             }
+
         }
+
+        CardManager.instance.ChangeNewCard(this);
     }
 
     public override void VirtualOnDamage()

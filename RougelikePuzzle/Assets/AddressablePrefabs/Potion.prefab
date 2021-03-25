@@ -207,7 +207,7 @@ MonoBehaviour:
   maxValue: 0
   value: 0
   cardType: 2
-  moveable: 2
+  moveable: 0
 --- !u!1 &2983342853534721483
 GameObject:
   m_ObjectHideFlags: 0

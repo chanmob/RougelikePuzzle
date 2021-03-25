@@ -7,22 +7,21 @@ public class FlameThrower2Way : Trap
 {
     public override void TriggerTrap()
     {
-        List<Card> cards = new List<Card>();
-        int len = 0;
-
+        List<Card> cards;
+        int len;
         switch (turnCount % 2)
         {
             case 0:
                 cards = CardManager.instance.GetTopBottomCards(this);
                 len = cards.Count;
 
-                for(int i = 0; i < len; i++)
+                for (int i = 0; i < len; i++)
                 {
                     cards[i].GetDamage(value);
                 }
                 break;
             case 1:
-               cards = CardManager.instance.GetRightLeftCards(this);
+                cards = CardManager.instance.GetRightLeftCards(this);
                 len = cards.Count;
 
                 for (int i = 0; i < len; i++)
@@ -31,6 +30,8 @@ public class FlameThrower2Way : Trap
                 }
                 break;
         }
+
+        CardManager.instance.ChangeNewCard(this);
     }
 
     public override void VirtualTurnEvent()

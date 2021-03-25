@@ -33,6 +33,7 @@ public class CardManager : Singleton<CardManager>
 
     public Queue<Card> cardQueue = new Queue<Card>();
 
+    [SerializeField]
     private int _cardsLen;
 
     private void Start()
@@ -48,9 +49,16 @@ public class CardManager : Singleton<CardManager>
         SetStartCard();
     }
 
+    public List<Card> s;
+
+    private void Update()
+    {
+        s = cardQueue.ToList();
+    }
+
     public bool CheckDistance(Card card)
     {
-        return Mathf.Abs((InGameManager.instance.player.vector.x + card.vector.x) - (InGameManager.instance.player.vector.y - card.vector.y)) == 1;
+        return Mathf.Abs(Mathf.Abs((InGameManager.instance.player.vector.x - card.vector.x)) + Mathf.Abs((InGameManager.instance.player.vector.y - card.vector.y))) == 1;
     }
 
     public List<Card> Get4WayCards(Card card)
@@ -201,22 +209,24 @@ public class CardManager : Singleton<CardManager>
             }
         }
 
-        cardQueue.Dequeue();
-        card.ReturnCard();
-
         Card newCard = NewCardType(selectedIdx);
         newCard.SetVector(card.vector.x, card.vector.y);
         newCard.transform.SetParent(cardsParents.transform);
         newCard.transform.position = new Vector2(card.vector.x * PADDING, card.vector.y * PADDING);
         newCard.gameObject.SetActive(true);
         newCard.SetData();
-        
+
+        card.ReturnCard();
+        cardQueue = new Queue<Card>(cardQueue.Where(x => x != card));
         cardQueue.Enqueue(newCard);
+
         return newCard;
     }
 
     private Card NewCardType(int idx)
     {
+        return ObjectPoolManager.instance.GetChangeCardPosition();
+
         switch (idx)
         {
             case 0:
