@@ -225,8 +225,6 @@ public class CardManager : Singleton<CardManager>
 
     private Card NewCardType(int idx)
     {
-        return ObjectPoolManager.instance.GetChangeCardPosition();
-
         switch (idx)
         {
             case 0:
