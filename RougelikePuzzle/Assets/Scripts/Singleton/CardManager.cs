@@ -49,13 +49,6 @@ public class CardManager : Singleton<CardManager>
         SetStartCard();
     }
 
-    public List<Card> s;
-
-    private void Update()
-    {
-        s = cardQueue.ToList();
-    }
-
     public bool CheckDistance(Card card)
     {
         return Mathf.Abs(Mathf.Abs((InGameManager.instance.player.vector.x - card.vector.x)) + Mathf.Abs((InGameManager.instance.player.vector.y - card.vector.y))) == 1;

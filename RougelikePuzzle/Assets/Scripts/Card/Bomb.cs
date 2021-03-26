@@ -28,8 +28,6 @@ public class Bomb : ObjectCard
 
     public void BombExplosion()
     {
-        Debug.Log("BombExplosion");
-
         List<Card> cards = CardManager.instance.Get4WayCards(this);
 
         int len = cards.Count;

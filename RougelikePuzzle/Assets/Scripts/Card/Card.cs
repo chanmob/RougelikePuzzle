@@ -57,7 +57,7 @@ public abstract class Card : MonoBehaviour
     public void SetValue(int value)
     {
         this.value = value;
-        _text.text = value.ToString();
+        _text.text = string.Format("{0}/{1}", value, maxValue);
     }
 
     public abstract void OnDamage();
@@ -74,12 +74,13 @@ public abstract class Card : MonoBehaviour
 
     public void SetData()
     {
+        maxValue = value;
+
         if (_cardData.isRandom)
             SetValue(Random.Range(_cardData.randomMinValue, _cardData.randomMaxValue + 1));
         else
             SetValue(_cardData.fixValue);
 
-        maxValue = value;
         if (maxValue == 0)
         {
             _text.gameObject.SetActive(false);

@@ -37,6 +37,6 @@ public class FlameThrower2Way : Trap
     public override void VirtualTurnEvent()
     {
         turnCount++;
-        _spriteRender.transform.DORotate(new Vector3(0, 0, (turnCount % 2) * 90), 0.5f);
+        _spriteRender.transform.DORotate(new Vector3(0, 0, (turnCount % 4) * 90), 0.5f);
     }
 }

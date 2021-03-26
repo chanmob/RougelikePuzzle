@@ -60,6 +60,7 @@ public class ObjectCard : Card
             {
                 case Moveable.Immovable:
                     VirtualInteractable();
+                    CardManager.instance.TurnEventCard();
                     break;
                 case Moveable.Movable:
                     InGameManager.instance.player.transform.DOMove(transform.position, 0.5f).SetEase(Ease.InBack).OnComplete(() => {
@@ -69,6 +70,7 @@ public class ObjectCard : Card
                         InGameManager.instance.player.SetVector(tempVec.x, tempVec.y);
 
                         VirtualInteractable();
+                        CardManager.instance.TurnEventCard();
                     });
                     break;
             }

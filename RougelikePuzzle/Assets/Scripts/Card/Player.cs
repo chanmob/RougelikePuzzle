@@ -53,7 +53,7 @@ public class Player : Card
 
             if (weaponDurability <= 0)
             {
-                value -= weaponDurability;
+                value += weaponDurability;
                 _text.text = string.Format("{0}/{1}", value, maxValue);
 
                 if (value <= 0)
