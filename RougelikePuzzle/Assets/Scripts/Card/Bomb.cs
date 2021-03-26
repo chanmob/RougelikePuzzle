@@ -12,7 +12,7 @@ public class Bomb : ObjectCard
 
     public override void VirtualOnDamage()
     {
-        BombExplosion();
+        //BombExplosion();
         CardManager.instance.ChangeNewCard(this);
     }
 

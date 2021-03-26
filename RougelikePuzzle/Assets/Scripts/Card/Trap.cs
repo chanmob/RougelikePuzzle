@@ -12,7 +12,8 @@ public class Trap : ObjectCard
 
     public override void VirtualOnDamage()
     {
-        TriggerTrap();
+        CardManager.instance.ChangeNewCard(this);
+        //TriggerTrap();
     }
 
     public virtual void TriggerTrap()
