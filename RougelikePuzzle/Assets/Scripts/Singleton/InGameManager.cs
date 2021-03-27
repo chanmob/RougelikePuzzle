@@ -8,6 +8,10 @@ public class InGameManager : Singleton<InGameManager>
 
     private int _getCoin = 0;
 
+    private int _turn = 1;
+
+    public bool isDay = true;
+
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
@@ -16,5 +20,13 @@ public class InGameManager : Singleton<InGameManager>
     public void GetCoin(int coin)
     {
         _getCoin += coin;
+    }
+
+    public void TurnEnd()
+    {
+        _turn++;
+
+        if (_turn % 4 == 0)
+            isDay = !isDay;
     }
 }

@@ -49,12 +49,10 @@ public class Player : Card
         if(weaponDurability > 0)
         {
             weaponDurability -= damage;
-            _text_Durability.text = weaponDurability.ToString();
 
             if (weaponDurability <= 0)
             {
                 value += weaponDurability;
-                _text.text = string.Format("{0}/{1}", value, maxValue);
 
                 if (value <= 0)
                 {
@@ -63,19 +61,19 @@ public class Player : Card
 
                 weaponDurability = 0;
                 weaponType = Define.WeaponType.None;
-                _text_Durability.gameObject.SetActive(false);
             }
         }
         else
         {
             value -= damage;
-            _text.text = string.Format("{0}/{1}", value, maxValue);
 
             if (value <= 0)
             {
 
             }
         }
+
+        PlayerHPTextRefresh();
     }
 
     public void PlayerGetWeapon(Define.WeaponType weaponType, int durability)
@@ -84,5 +82,15 @@ public class Player : Card
         weaponDurability = durability;
         _text_Durability.text = weaponDurability.ToString();
         _text_Durability.gameObject.SetActive(true);
+    }
+
+    public void PlayerHPTextRefresh()
+    {
+        _text.text = string.Format("{0}/{1}", value, maxValue);
+        
+        if (weaponDurability > 0)
+            _text_Durability.text = weaponDurability.ToString();
+        else
+            _text_Durability.gameObject.SetActive(false);
     }
 }
