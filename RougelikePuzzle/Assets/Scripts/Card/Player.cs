@@ -46,7 +46,12 @@ public class Player : Card
 
     public void PlayerGetDamage(int damage)
     {
-        if(weaponDurability > 0)
+        OnDamageEvent(damage);
+    }
+
+    public void TakeDamage(int damage)
+    {
+        if (weaponDurability > 0)
         {
             weaponDurability -= damage;
 
@@ -72,8 +77,6 @@ public class Player : Card
 
             }
         }
-
-        PlayerHPTextRefresh();
     }
 
     public void PlayerGetWeapon(Define.WeaponType weaponType, int durability)
@@ -82,6 +85,7 @@ public class Player : Card
         weaponDurability = durability;
         _text_Durability.text = weaponDurability.ToString();
         _text_Durability.gameObject.SetActive(true);
+        GetWeaponEvent();
     }
 
     public void PlayerHPTextRefresh()
@@ -92,5 +96,15 @@ public class Player : Card
             _text_Durability.text = weaponDurability.ToString();
         else
             _text_Durability.gameObject.SetActive(false);
+    }
+
+    protected virtual void GetWeaponEvent()
+    {
+
+    }
+
+    protected virtual void OnDamageEvent(int damage)
+    {
+        TakeDamage(damage);
     }
 }
