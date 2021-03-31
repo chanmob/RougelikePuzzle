@@ -110,6 +110,55 @@ public class CardManager : Singleton<CardManager>
         return cards;
     }
 
+    public List<Card> GetSameXCards(Card card)
+    {
+        List<Card> cards = new List<Card>();
+
+        for(int i = -1; i <= 1; i++)
+        {
+            Card c = GetCard(card.vector.x, i);
+            if (c != card)
+                cards.Add(c);
+        }
+
+        return cards;
+    }
+
+    public List<Card> GetSameYCards(Card card)
+    {
+        List<Card> cards = new List<Card>();
+
+        for (int i = -1; i <= 1; i++)
+        {
+            Card c = GetCard(i, card.vector.y);
+            if (c != card)
+                cards.Add(c);
+        }
+
+        return cards;
+    }
+
+    public List<Card> GetSameXAndYCards(Card card)
+    {
+        List<Card> cards = new List<Card>();
+
+        for (int i = -1; i <= 1; i++)
+        {
+            Card c = GetCard(card.vector.x, i);
+            if (c != card)
+                cards.Add(c);
+        }
+
+        for (int i = -1; i <= 1; i++)
+        {
+            Card c = GetCard(i, card.vector.y);
+            if (c != card)
+                cards.Add(c);
+        }
+
+        return cards;
+    }
+
     public Card GetCard(int x, int y)
     {
         foreach(Card card in cardQueue)
