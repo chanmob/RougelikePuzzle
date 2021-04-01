@@ -38,11 +38,17 @@ public class Monster : ObjectCard
 
     public override void VirtualTurnEvent()
     {
+        MonsterTurnEvent();
     }
 
     public override void VirtualReturnCard()
     {
         ObjectPoolManager.instance.ReturnMonster(this);
+    }
+
+    public virtual void MonsterTurnEvent()
+    {
+
     }
 
     private void Die()

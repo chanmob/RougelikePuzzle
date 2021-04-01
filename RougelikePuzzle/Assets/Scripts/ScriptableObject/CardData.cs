@@ -15,4 +15,7 @@ public class CardData : ScriptableObject
     public int randomMinValue;
     public int randomMaxValue;
     public int fixValue;
+
+    public Define.CardType cardType = Define.CardType.None;
+    public Define.CardType dropCardType = Define.CardType.None;
 }

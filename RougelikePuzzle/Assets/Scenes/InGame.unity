@@ -611,7 +611,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8c8a65e62dd1034b9281b7f0b8f4c8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cardData: {fileID: 0}
+  cardData: {fileID: 0}
   _spriteRender: {fileID: 0}
   vector: {x: 0, y: 0}
   maxValue: 0
@@ -729,7 +729,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.254717, g: 0.254717, b: 0.254717, a: 0}
+  m_BackGroundColor: {r: 0.20754719, g: 0.20754719, b: 0.20754719, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0

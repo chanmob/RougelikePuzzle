@@ -227,28 +227,36 @@ public class CardManager : Singleton<CardManager>
 
     public Card ChangeNewCard(Card card)
     {
-        int len = categoryPercent.Length;
-        int sum = 0;
-
-        for(int i = 0; i < len; i++)
-        {
-            sum += categoryPercent[i];
-        }
-         
-        int categoryIdx = Random.Range(0, sum);
         int selectedIdx = -1;
 
-        for(int i = 0; i < len; i++)
+        if (card.cardData.dropCardType == Define.CardType.None)
         {
-            if(categoryIdx < categoryPercent[i])
+            int len = categoryPercent.Length;
+            int sum = 0;
+
+            for (int i = 0; i < len; i++)
             {
-                selectedIdx = i;
-                break;
+                sum += categoryPercent[i];
             }
-            else
+
+            int categoryIdx = Random.Range(0, sum);
+
+            for (int i = 0; i < len; i++)
             {
-                categoryIdx -= categoryPercent[i];
+                if (categoryIdx < categoryPercent[i])
+                {
+                    selectedIdx = i;
+                    break;
+                }
+                else
+                {
+                    categoryIdx -= categoryPercent[i];
+                }
             }
+        }
+        else
+        {
+            selectedIdx = (int)card.cardData.dropCardType;
         }
 
         Card newCard = NewCardType(selectedIdx);

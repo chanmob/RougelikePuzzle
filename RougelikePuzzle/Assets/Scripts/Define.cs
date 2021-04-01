@@ -8,6 +8,7 @@ public static class Define
     {
         Player,
         Monster,
+        Coin,
         None
     }
 

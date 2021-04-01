@@ -15,8 +15,7 @@ public abstract class Card : MonoBehaviour
 
     protected const int ONUITIME = 2;
 
-    [SerializeField]
-    private CardData _cardData;
+    public CardData cardData;
 
     [SerializeField]
     protected SpriteRenderer _spriteRender;
@@ -45,7 +44,7 @@ public abstract class Card : MonoBehaviour
 
     private void Start()
     {
-        _spriteRender.sprite = _cardData.cardSprite;
+        _spriteRender.sprite = cardData.cardSprite;
     }
 
     public void SetVector(int x, int y)
@@ -60,6 +59,15 @@ public abstract class Card : MonoBehaviour
 
         if (_text.gameObject.activeSelf)
             _text.text = string.Format("{0}/{1}", value, maxValue);
+
+        if (value > 0)
+        {
+            _text.gameObject.SetActive(false);
+        }
+        else
+        {
+            _text.gameObject.SetActive(true);
+        }
     }
 
     public abstract void OnDamage();
@@ -74,19 +82,53 @@ public abstract class Card : MonoBehaviour
         SetValue(value - dmg);
     }
 
+    public void GetHeal(int heal, bool over = false)
+    {
+        int v = value + heal;
+
+        if (over)
+        {
+            SetValue(v);
+        }
+        else
+        {
+            if (value > maxValue)
+                return;
+
+            if (v > maxValue)
+            {
+                SetValue(maxValue);
+            }
+            else
+            {
+                SetValue(v);
+            }
+        }
+    }
+
+    public void AddMaxValue(int inc, bool heal = false)
+    {
+        maxValue += inc;
+
+        if (heal)
+            GetHeal(inc);
+        else
+            GetHeal(0);
+    }
+
     public void SetData()
     {
         int v = 0;
 
-        if (_cardData.isRandom)
-            v = Random.Range(_cardData.randomMinValue, _cardData.randomMaxValue + 1);
+        if (cardData.isRandom)
+            v = Random.Range(cardData.randomMinValue, cardData.randomMaxValue + 1);
         else
-            v = _cardData.fixValue;
+            v = cardData.fixValue;
 
         maxValue = v;
         SetValue(v);
 
-        if (maxValue == 0)
+        if (maxValue > 0)
         {
             _text.gameObject.SetActive(false);
         }
