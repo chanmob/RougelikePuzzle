@@ -843,6 +843,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bomb
       objectReference: {fileID: 0}
+    - target: {fileID: 9075680082167591562, guid: f0a5dba49b213574b87f55c1f1927f50,
+        type: 3}
+      propertyPath: cardData
+      value: 
+      objectReference: {fileID: 11400000, guid: 704e3909252faf6448a5bf54980fc75f,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f0a5dba49b213574b87f55c1f1927f50, type: 3}
 --- !u!4 &613259702 stripped
@@ -918,6 +924,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5475354177146071794, guid: dd460232a136554459ff53eb09d32f68,
+        type: 3}
+      propertyPath: cardData
+      value: 
+      objectReference: {fileID: 11400000, guid: 2aeb19fa9fcdb45479fb140fb1afceeb,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd460232a136554459ff53eb09d32f68, type: 3}
 --- !u!4 &648806934 stripped
@@ -1046,6 +1058,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Monster
       objectReference: {fileID: 0}
+    - target: {fileID: 2187813331755593626, guid: 2ff3dc564353f014d95a9c964b8ebdbd,
+        type: 3}
+      propertyPath: cardData
+      value: 
+      objectReference: {fileID: 11400000, guid: 4a11bddd2c9f5694287e4980e3e0a5df,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ff3dc564353f014d95a9c964b8ebdbd, type: 3}
 --- !u!4 &767800845 stripped
@@ -1691,6 +1709,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 252837159634025135, guid: e534481d9eb6e83408487649cd4d8aeb,
+        type: 3}
+      propertyPath: cardData
+      value: 
+      objectReference: {fileID: 11400000, guid: 722d37c634a24a84fa9471ed87666977,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e534481d9eb6e83408487649cd4d8aeb, type: 3}
 --- !u!4 &1325154277 stripped
@@ -1826,6 +1850,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Monster (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2187813331755593626, guid: 2ff3dc564353f014d95a9c964b8ebdbd,
+        type: 3}
+      propertyPath: cardData
+      value: 
+      objectReference: {fileID: 11400000, guid: 4a11bddd2c9f5694287e4980e3e0a5df,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ff3dc564353f014d95a9c964b8ebdbd, type: 3}
 --- !u!4 &1465883390 stripped
@@ -1940,6 +1970,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: CardReset
       objectReference: {fileID: 0}
+    - target: {fileID: 4992267137324571792, guid: 85f9b9b387e28f0498348b0f1fd484a8,
+        type: 3}
+      propertyPath: cardData
+      value: 
+      objectReference: {fileID: 11400000, guid: c171fdedb93066343baa241e05599309,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 85f9b9b387e28f0498348b0f1fd484a8, type: 3}
 --- !u!4 &1677119145 stripped
@@ -2085,6 +2121,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1472939624}
     m_Modifications:
+    - target: {fileID: 8321375363388446805, guid: cb7d2d355ccee7146990f4240378faca,
+        type: 3}
+      propertyPath: cardData
+      value: 
+      objectReference: {fileID: 11400000, guid: 091a589e9829f9f428cd2253c7172da6,
+        type: 2}
     - target: {fileID: 8612294862094056444, guid: cb7d2d355ccee7146990f4240378faca,
         type: 3}
       propertyPath: m_RootOrder
@@ -2220,6 +2262,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Coin
       objectReference: {fileID: 0}
+    - target: {fileID: 4863583784800380251, guid: d085f273d187f964cb2365fa76075092,
+        type: 3}
+      propertyPath: cardData
+      value: 
+      objectReference: {fileID: 11400000, guid: 1c388321f679de54ba390dd3a4061489,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d085f273d187f964cb2365fa76075092, type: 3}
 --- !u!4 &2063133950 stripped

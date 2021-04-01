@@ -222,7 +222,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d13d6c4d7e90c03418f55c778541ad88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cardData: {fileID: 11400000, guid: 722d37c634a24a84fa9471ed87666977, type: 2}
+  cardData: {fileID: 11400000, guid: 722d37c634a24a84fa9471ed87666977, type: 2}
   _spriteRender: {fileID: 0}
   vector: {x: 0, y: 0}
   maxValue: 0

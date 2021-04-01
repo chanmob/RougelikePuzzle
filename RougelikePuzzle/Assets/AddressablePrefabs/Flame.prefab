@@ -123,7 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a25039bbf5557149a55b5744fd066bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cardData: {fileID: 11400000, guid: 091a589e9829f9f428cd2253c7172da6, type: 2}
+  cardData: {fileID: 11400000, guid: 091a589e9829f9f428cd2253c7172da6, type: 2}
   _spriteRender: {fileID: 0}
   vector: {x: 0, y: 0}
   maxValue: 0
