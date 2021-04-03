@@ -1,18 +1,28 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UI_InfoPopup : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private Image _image_Sprite;
+    private Text _text_InfoName;
+    private Text _text_InfoContent;
+
+    private CardData _infoData;
+
+    private void OnEnable()
     {
-        
+        if(_infoData != null)
+        {
+            _image_Sprite.sprite = _infoData.cardSprite;
+            _text_InfoName.text = _infoData.cardName;
+            _text_InfoContent.text = _infoData.cardInfo;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetData(CardData data)
     {
-        
+        _infoData = data;
     }
 }
