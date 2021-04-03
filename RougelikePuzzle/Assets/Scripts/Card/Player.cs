@@ -83,9 +83,11 @@ public class Player : Card
     {
         this.weaponType = weaponType;
         weaponDurability = durability;
+
+        GetWeaponEvent();
+
         _text_Durability.text = weaponDurability.ToString();
         _text_Durability.gameObject.SetActive(true);
-        GetWeaponEvent();
     }
 
     public void PlayerHPTextRefresh()
