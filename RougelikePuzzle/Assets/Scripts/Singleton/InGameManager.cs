@@ -30,6 +30,7 @@ public class InGameManager : Singleton<InGameManager>
     public void TurnEnd()
     {
         _turn++;
+        InGameUIManager.instance.ui_InGameMainUI.ChangeTimeSlider((_turn % 4) / 4f);
 
         if (_turn % 4 == 0)
         {

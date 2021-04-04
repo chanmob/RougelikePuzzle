@@ -13,6 +13,11 @@ public class UI_InGameMainUI : MonoBehaviour
     [SerializeField]
     private Slider _slider_Time;
 
+    public void ChangeTimeSlider(float value)
+    {
+        _slider_Time.value = value;
+    }
+
     public void SellWeapon()
     {
 
