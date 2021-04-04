@@ -142,7 +142,8 @@ public abstract class Card : MonoBehaviour
 
     protected void ShowInfoUI()
     {
-
+        InGameUIManager.instance.ui_InfoPopup.SetData(cardData);
+        InGameUIManager.instance.ui_InfoPopup.gameObject.SetActive(true);
     }
 
     public void ScaleAnimation()

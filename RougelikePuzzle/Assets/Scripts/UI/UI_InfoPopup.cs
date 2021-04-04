@@ -5,8 +5,11 @@ using UnityEngine.UI;
 
 public class UI_InfoPopup : MonoBehaviour
 {
+    [SerializeField]
     private Image _image_Sprite;
+    [SerializeField]
     private Text _text_InfoName;
+    [SerializeField]
     private Text _text_InfoContent;
 
     private CardData _infoData;
@@ -24,5 +27,10 @@ public class UI_InfoPopup : MonoBehaviour
     public void SetData(CardData data)
     {
         _infoData = data;
+    }
+
+    public void CloseUI()
+    {
+        gameObject.SetActive(false);
     }
 }

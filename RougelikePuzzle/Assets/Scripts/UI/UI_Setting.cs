@@ -5,5 +5,8 @@ using UnityEngine.UI;
 
 public class UI_Setting : MonoBehaviour
 {
-
+    public void CloseUI()
+    {
+        gameObject.SetActive(false);
+    }
 }
