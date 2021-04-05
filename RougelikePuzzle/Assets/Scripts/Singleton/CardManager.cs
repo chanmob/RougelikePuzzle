@@ -263,6 +263,10 @@ public class CardManager : Singleton<CardManager>
         newCard.SetVector(card.vector.x, card.vector.y);
         newCard.transform.SetParent(cardsParents.transform);
         newCard.transform.position = new Vector2(card.vector.x * PADDING, card.vector.y * PADDING);
+        if(InGameManager.instance.isDay)
+            newCard.GetComponent<SpriteRenderer>().sprite = InGameManager.instance.tileSprite[0];
+        else
+            newCard.GetComponent<SpriteRenderer>().sprite = InGameManager.instance.tileSprite[1];
         newCard.gameObject.SetActive(true);
         newCard.SetData();
 

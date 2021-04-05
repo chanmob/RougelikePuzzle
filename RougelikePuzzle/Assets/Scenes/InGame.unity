@@ -1001,6 +1001,9 @@ MonoBehaviour:
   dontDestroyOnLoad: 0
   dayColor: {r: 0.6745098, g: 0.81960785, b: 0.9490196, a: 1}
   nightColor: {r: 0.07058824, g: 0.09803922, b: 0.14901961, a: 1}
+  tileSprite:
+  - {fileID: 21300000, guid: ffc45bd5d8a400441a0deca16bee6cd1, type: 3}
+  - {fileID: 21300000, guid: 721749dd8de2eb7449934bdf7c9e8d79, type: 3}
   isDay: 1
 --- !u!4 &508493679
 Transform:

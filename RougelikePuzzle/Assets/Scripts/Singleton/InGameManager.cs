@@ -8,6 +8,9 @@ public class InGameManager : Singleton<InGameManager>
     public Color dayColor;
     public Color nightColor;
 
+    [SerializeField]
+    public Sprite[] tileSprite;
+
     public Player player { get; private set; }
 
     private int _getCoin = 0;
@@ -27,6 +30,14 @@ public class InGameManager : Singleton<InGameManager>
         _getCoin += coin;
     }
 
+    //public void Update()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.F))
+    //    {
+    //        TurnEnd();
+    //    }
+    //}
+
     public void TurnEnd()
     {
         _turn++;
@@ -36,6 +47,14 @@ public class InGameManager : Singleton<InGameManager>
         {
             isDay = !isDay;
             ChangeCameraBackgroundColor();
+
+            foreach(var card in CardManager.instance.cardQueue)
+            {
+                if(isDay)
+                    card.GetComponent<SpriteRenderer>().sprite = tileSprite[0];
+                else
+                    card.GetComponent<SpriteRenderer>().sprite = tileSprite[1];
+            }
         }
     }
 
