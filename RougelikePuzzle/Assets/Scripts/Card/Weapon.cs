@@ -10,6 +10,7 @@ public class Weapon : ObjectCard
     public override void VirtualInteractable()
     {
         InGameManager.instance.player.PlayerGetWeapon(weaponType, value);
+        InGameManager.instance.player.weapon = this;
         CardManager.instance.ChangeNewCard(this);
     }
 
@@ -26,5 +27,33 @@ public class Weapon : ObjectCard
     public override void VirtualReturnCard()
     {
         ObjectPoolManager.instance.ReturnWeapon(this);
+    }
+
+
+    public virtual void WeaponEventBeforeGetDamage(Card card)
+    {
+
+    }
+
+    public virtual void WeaponEventAfterGetDamage(Card card)
+    {
+
+    }
+
+    public virtual void WeaponEventBeforeAttack(Card card)
+    {
+
+    }
+
+    public virtual void WeaponEventAfterAttack(Card card)
+    {
+
+    }
+
+    public virtual void Attack(Card card)
+    {
+        WeaponEventBeforeAttack(card);
+        card.GetDamage(InGameManager.instance.player.weaponDurability, this);
+        WeaponEventAfterAttack(card);
     }
 }

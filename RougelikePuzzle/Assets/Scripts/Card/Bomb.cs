@@ -34,7 +34,7 @@ public class Bomb : ObjectCard
 
         for(int i = 0; i < len; i++)
         {
-            cards[i].GetDamage(value);
+            cards[i].GetDamage(value, this);
         }
     }
 }

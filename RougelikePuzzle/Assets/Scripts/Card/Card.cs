@@ -70,16 +70,15 @@ public abstract class Card : MonoBehaviour
         }
     }
 
-    public abstract void OnDamage();
+    public abstract void OnDamage(int dmg, Card card);
 
     public abstract void TurnEvent();
 
     public abstract void ReturnCard();
 
-    public void GetDamage(int dmg)
+    public void GetDamage(int dmg, Card card)
     {
-        OnDamage();
-        SetValue(value - dmg);
+        OnDamage(dmg, card);
     }
 
     public void GetHeal(int heal, bool over = false)

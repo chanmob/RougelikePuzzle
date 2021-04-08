@@ -8,7 +8,7 @@ public class Zombie : Monster
     {
         if(value > 1)
         {
-            GetDamage(1);
+            GetDamage(1, this);
         }
     }
 }

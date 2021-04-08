@@ -17,7 +17,7 @@ public class FlameThrower : Trap
                 if (y <= 1)
                 {
                     Card card = CardManager.instance.GetCard(x, y);
-                    card.GetDamage(value);
+                    card.GetDamage(value, this);
                 }
                 break;
             case 1:
@@ -25,7 +25,7 @@ public class FlameThrower : Trap
                 if (x <= 1)
                 {
                     Card card = CardManager.instance.GetCard(x, y);
-                    card.GetDamage(value);
+                    card.GetDamage(value, this);
                 }
                 break;
             case 2:
@@ -33,7 +33,7 @@ public class FlameThrower : Trap
                 if (y >= -1)
                 {
                     Card card = CardManager.instance.GetCard(x, y);
-                    card.GetDamage(value);
+                    card.GetDamage(value, this);
                 }
                 break;
             case 3:
@@ -41,7 +41,7 @@ public class FlameThrower : Trap
                 if (x >= -1)
                 {
                     Card card = CardManager.instance.GetCard(x, y);
-                    card.GetDamage(value);
+                    card.GetDamage(value, this);
                 }
                 break;
         }

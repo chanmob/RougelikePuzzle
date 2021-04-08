@@ -9,6 +9,8 @@ public class Player : Card
 
     public Define.WeaponType weaponType = Define.WeaponType.None;
 
+    public Weapon weapon;
+
     [SerializeField]
     private Text _text_Durability;
     [SerializeField]
@@ -19,8 +21,12 @@ public class Player : Card
         maxValue = value;
     }
 
-    public override void OnDamage()
+    public override void OnDamage(int dmg, Card card)
     {
+        if (weaponType != Define.WeaponType.None)
+            weapon.WeaponEventBeforeGetDamage(card);
+
+        OnDamageEvent(dmg, card);
     }
 
     public override void TurnEvent()
@@ -44,18 +50,13 @@ public class Player : Card
         }
     }
 
-    public void PlayerGetDamage(int damage)
-    {
-        OnDamageEvent(damage);
-    }
-
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage, Card card)
     {
         if (weaponDurability > 0)
         {
             weaponDurability -= damage;
 
-            if (weaponDurability <= 0)
+            if (weaponDurability < 0)
             {
                 value += weaponDurability;
 
@@ -77,6 +78,9 @@ public class Player : Card
 
             }
         }
+
+        if (weaponType != Define.WeaponType.None)
+            weapon.WeaponEventAfterGetDamage(card);
     }
 
     public void PlayerGetWeapon(Define.WeaponType weaponType, int durability)
@@ -105,8 +109,8 @@ public class Player : Card
 
     }
 
-    protected virtual void OnDamageEvent(int damage)
+    protected virtual void OnDamageEvent(int damage, Card card)
     {
-        TakeDamage(damage);
+        TakeDamage(damage, card);
     }
 }

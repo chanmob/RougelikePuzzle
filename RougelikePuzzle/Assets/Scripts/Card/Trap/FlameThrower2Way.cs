@@ -17,7 +17,7 @@ public class FlameThrower2Way : Trap
 
                 for (int i = 0; i < len; i++)
                 {
-                    cards[i].GetDamage(value);
+                    cards[i].GetDamage(value, this);
                 }
                 break;
             case 1:
@@ -26,7 +26,7 @@ public class FlameThrower2Way : Trap
 
                 for (int i = 0; i < len; i++)
                 {
-                    cards[i].GetDamage(value);
+                    cards[i].GetDamage(value, this);
                 }
                 break;
         }

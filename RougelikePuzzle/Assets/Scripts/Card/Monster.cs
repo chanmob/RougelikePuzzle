@@ -7,23 +7,23 @@ public class Monster : ObjectCard
 {
     public override void VirtualInteractable()
     {
-        int wd = InGameManager.instance.player.weaponDurability;
         int tempHp = value;
 
-        if (wd > 0)
+        if (InGameManager.instance.player.weaponType != Define.WeaponType.None)
         {
-            GetDamage(wd);
-            InGameManager.instance.player.PlayerGetDamage(tempHp);
+            InGameManager.instance.player.weapon.Attack(this);
+            InGameManager.instance.player.GetDamage(tempHp, this);
 
             if (value <= 0)
             {
                 Die();
             }
         }
+
         else
         {
-            GetDamage(InGameManager.instance.player.value);
-            InGameManager.instance.player.PlayerGetDamage(tempHp);
+            GetDamage(InGameManager.instance.player.value, this);
+            InGameManager.instance.player.GetDamage(tempHp, this);
 
             if (value <= 0)
             {

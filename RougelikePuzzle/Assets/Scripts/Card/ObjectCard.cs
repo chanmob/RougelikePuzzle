@@ -6,9 +6,10 @@ using DG.Tweening;
 public class ObjectCard : Card
 {
     #region Override
-    public override void OnDamage()
+    public override void OnDamage(int dmg, Card card)
     {
         VirtualOnDamage();
+        SetValue(value - dmg);
     }
 
     public override void TurnEvent()
