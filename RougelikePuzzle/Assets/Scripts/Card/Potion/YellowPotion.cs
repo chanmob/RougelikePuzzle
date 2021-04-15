@@ -9,4 +9,9 @@ public class YellowPotion : Potion
         InGameManager.instance.player.value /= 2;
         InGameManager.instance.player.PlayerHPTextRefresh();
     }
+
+    public override void VirtualReturnCard()
+    {
+        ObjectPoolManager.instance.ReturnYellowPotion(this);
+    }
 }

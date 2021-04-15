@@ -9,4 +9,9 @@ public class PurplePotion : Potion
         InGameManager.instance.player.value = 1;
         InGameManager.instance.player.PlayerHPTextRefresh();
     }
+
+    public override void VirtualReturnCard()
+    {
+        ObjectPoolManager.instance.ReturnPurplePotion(this);
+    }
 }

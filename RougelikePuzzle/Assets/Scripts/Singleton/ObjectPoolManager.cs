@@ -28,9 +28,30 @@ public class ObjectPoolManager : Singleton<ObjectPoolManager>
     private Transform _tr_Thorn;
 
     [Header("Potion")]
+    private Stack<BlackPotion> _stack_Blackotion;
+    [SerializeField]
+    private Transform _tr_BlackPotion;
+    
+    private Stack<BluePotion> _stack_BluePotion;
+    [SerializeField]
+    private Transform _tr_BluePotion;
+    
+    private Stack<PinkPotion> _stack_PinkPotion;
+    [SerializeField]
+    private Transform _tr_PinkPotion;
+    
+    private Stack<PurplePotion> _stack_PurplePotion;
+    [SerializeField]
+    private Transform _tr_PurplePotion;
+
     private Stack<RedPotion> _stack_RedPotion;
     [SerializeField]
     private Transform _tr_RedPotion;
+
+    private Stack<YellowPotion> _stack_YellowPotion;
+    [SerializeField]
+    private Transform _tr_YellowPotion;
+
 
     [Header("Monster")]
     private Stack<Monster> _stack_Monster;
@@ -63,7 +84,16 @@ public class ObjectPoolManager : Singleton<ObjectPoolManager>
         _stack_FlameThrower = new Stack<FlameThrower>();
         _stack_FlameThrower2Way = new Stack<FlameThrower2Way>();
         _stack_Monster = new Stack<Monster>();
+
+
+        _stack_Blackotion = new Stack<BlackPotion>();
+        _stack_BluePotion = new Stack<BluePotion>();
+        _stack_PinkPotion = new Stack<PinkPotion>();
+        _stack_PurplePotion = new Stack<PurplePotion>();
         _stack_RedPotion = new Stack<RedPotion>();
+        _stack_YellowPotion = new Stack<YellowPotion>();
+        
+        
         _stack_Thorn = new Stack<Thorn>();
         _stack_Weapon = new Stack<Weapon>();
     }
@@ -230,11 +260,144 @@ public class ObjectPoolManager : Singleton<ObjectPoolManager>
     #endregion
 
     #region Potion
+
+    private void MakeBlackPotion(int count)
+    {
+        for (int i = 0; i < count; i++)
+        {
+            BlackPotion newBlackPotion = Instantiate(DataManager.instance.blackPotion);
+            newBlackPotion.gameObject.SetActive(false);
+            newBlackPotion.transform.SetParent(_tr_BlackPotion);
+
+            _stack_Blackotion.Push(newBlackPotion);
+        }
+    }
+
+    public BlackPotion GetBlackPotion()
+    {
+        int cnt = _stack_Blackotion.Count;
+
+        if (cnt == 0)
+            MakeBlackPotion(1);
+
+        return _stack_Blackotion.Pop();
+    }
+
+    public void ReturnBlackPotion(BlackPotion card)
+    {
+        if (card.gameObject.activeSelf)
+            card.gameObject.SetActive(false);
+
+        card.transform.SetParent(_tr_BlackPotion);
+        _stack_Blackotion.Push(card);
+    }
+
+
+
+    private void MakeBluePotion(int count)
+    {
+        for (int i = 0; i < count; i++)
+        {
+            BluePotion newBluePotion = Instantiate(DataManager.instance.bluePotion);
+            newBluePotion.gameObject.SetActive(false);
+            newBluePotion.transform.SetParent(_tr_BluePotion);
+
+            _stack_BluePotion.Push(newBluePotion);
+        }
+    }
+
+    public BluePotion GetBluePotion()
+    {
+        int cnt = _stack_BluePotion.Count;
+
+        if (cnt == 0)
+            MakeBluePotion(1);
+
+        return _stack_BluePotion.Pop();
+    }
+
+    public void ReturnBluePotion(BluePotion card)
+    {
+        if (card.gameObject.activeSelf)
+            card.gameObject.SetActive(false);
+
+        card.transform.SetParent(_tr_BluePotion);
+        _stack_BluePotion.Push(card);
+    }
+
+
+
+    private void MakePinkPotion(int count)
+    {
+        for (int i = 0; i < count; i++)
+        {
+            PinkPotion newPinkPotion = Instantiate(DataManager.instance.pinkPotion);
+            newPinkPotion.gameObject.SetActive(false);
+            newPinkPotion.transform.SetParent(_tr_PinkPotion);
+
+            _stack_PinkPotion.Push(newPinkPotion);
+        }
+    }
+
+    public PinkPotion GetPinkPotion()
+    {
+        int cnt = _stack_PinkPotion.Count;
+
+        if (cnt == 0)
+            MakePinkPotion(1);
+
+        return _stack_PinkPotion.Pop();
+    }
+
+    public void ReturnPinkPotion(PinkPotion card)
+    {
+        if (card.gameObject.activeSelf)
+            card.gameObject.SetActive(false);
+
+        card.transform.SetParent(_tr_PinkPotion);
+        _stack_PinkPotion.Push(card);
+    }
+
+
+
+    private void MakePurplePotion(int count)
+    {
+        for (int i = 0; i < count; i++)
+        {
+            PurplePotion newPurplePotion = Instantiate(DataManager.instance.purplePotion);
+            newPurplePotion.gameObject.SetActive(false);
+            newPurplePotion.transform.SetParent(_tr_PurplePotion);
+
+            _stack_PurplePotion.Push(newPurplePotion);
+        }
+    }
+
+    public PurplePotion GetPurplePotion()
+    {
+        int cnt = _stack_PurplePotion.Count;
+
+        if (cnt == 0)
+            MakePurplePotion(1);
+
+        return _stack_PurplePotion.Pop();
+    }
+
+    public void ReturnPurplePotion(PurplePotion card)
+    {
+        if (card.gameObject.activeSelf)
+            card.gameObject.SetActive(false);
+
+        card.transform.SetParent(_tr_PurplePotion);
+        _stack_PurplePotion.Push(card);
+    }
+
+
+
     private void MakeRedPotion(int count)
     {
         for (int i = 0; i < count; i++)
         {
-            RedPotion newRedPotion = Instantiate(DataManager.instance.potion);
+            RedPotion newRedPotion = Instantiate(DataManager.instance.redPotion);
             newRedPotion.gameObject.SetActive(false);
             newRedPotion.transform.SetParent(_tr_RedPotion);
 
@@ -260,6 +423,40 @@ public class ObjectPoolManager : Singleton<ObjectPoolManager>
         card.transform.SetParent(_tr_RedPotion);
         _stack_RedPotion.Push(card);
     }
+
+
+
+    private void MakeYellowPotion(int count)
+    {
+        for (int i = 0; i < count; i++)
+        {
+            YellowPotion newYellowPotion = Instantiate(DataManager.instance.yellowPotion);
+            newYellowPotion.gameObject.SetActive(false);
+            newYellowPotion.transform.SetParent(_tr_YellowPotion);
+
+            _stack_YellowPotion.Push(newYellowPotion);
+        }
+    }
+
+    public YellowPotion GetYellowPotion()
+    {
+        int cnt = _stack_YellowPotion.Count;
+
+        if (cnt == 0)
+            MakeYellowPotion(1);
+
+        return _stack_YellowPotion.Pop();
+    }
+
+    public void ReturnYellowPotion(YellowPotion card)
+    {
+        if (card.gameObject.activeSelf)
+            card.gameObject.SetActive(false);
+
+        card.transform.SetParent(_tr_YellowPotion);
+        _stack_YellowPotion.Push(card);
+    }
+
     #endregion
 
     #region Monster

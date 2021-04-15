@@ -10,4 +10,9 @@ public class BluePotion : Potion
 
         InGameManager.instance.player.PlayerHPTextRefresh();
     }
+
+    public override void VirtualReturnCard()
+    {
+        ObjectPoolManager.instance.ReturnBluePotion(this);
+    }
 }

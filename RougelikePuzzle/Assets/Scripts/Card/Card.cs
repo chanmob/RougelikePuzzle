@@ -129,11 +129,11 @@ public abstract class Card : MonoBehaviour
 
         if (maxValue > 0)
         {
-            _text.gameObject.SetActive(false);
+            _text.gameObject.SetActive(true);
         }
         else
         {
-            _text.gameObject.SetActive(true);
+            _text.gameObject.SetActive(false);
         }
 
         ScaleAnimation();

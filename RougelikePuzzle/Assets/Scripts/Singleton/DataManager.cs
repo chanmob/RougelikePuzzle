@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class DataManager : Singleton<DataManager>
 {
+    private const string PATH_POTION = "Objects/Potion/";
+
+    [Header("Bomb")]
     public Bomb bomb;
 
-    public CardReset cardReset;
-
-    public ChangeCardPosition changeCardPosition;
-
+    
+    [Header("Weapon")]
     public Weapon weapon;
 
     public Coin coin;
@@ -20,7 +21,20 @@ public class DataManager : Singleton<DataManager>
 
     public Monster monster;
 
-    public RedPotion potion;
+    [Header("Potion")]
+    public BlackPotion blackPotion;
+    public BluePotion bluePotion;
+    public PinkPotion pinkPotion;
+    public PurplePotion purplePotion;
+    public RedPotion redPotion;
+    public YellowPotion yellowPotion;
+    
+
+    [Header("ETC")]
+    public CardReset cardReset;
+
+    public ChangeCardPosition changeCardPosition;
+
 
     public void TempVoid()
     {
@@ -34,10 +48,17 @@ public class DataManager : Singleton<DataManager>
         changeCardPosition = Resources.Load<ChangeCardPosition>("Objects/ChangeCardPosition");
         weapon = Resources.Load<Weapon>("Objects/Weapon");
         coin = Resources.Load<Coin>("Objects/Coin");
-        //flameThrower2Way = Resources.Load<FlameThrower2Way>("Objects/FlameThrower2Way");
         flameThrower = Resources.Load<FlameThrower>("Objects/Flame");
         thorn = Resources.Load<Thorn>("Objects/Thorn");
         monster = Resources.Load<Monster>("Objects/Monster");
-        potion = Resources.Load<RedPotion>("Objects/Potion");
+
+        //Potion
+        blackPotion = Resources.Load<BlackPotion>(PATH_POTION + "BlackPotion");
+        bluePotion = Resources.Load<BluePotion>(PATH_POTION + "BluePotion");
+        pinkPotion = Resources.Load<PinkPotion>(PATH_POTION + "PinkPotion");
+        purplePotion = Resources.Load<PurplePotion>(PATH_POTION + "PurplePotion");
+        redPotion = Resources.Load<RedPotion>(PATH_POTION + "RedPotion");
+        yellowPotion = Resources.Load<YellowPotion>(PATH_POTION + "Yellowpotion");
+        //Potion
     }
 }

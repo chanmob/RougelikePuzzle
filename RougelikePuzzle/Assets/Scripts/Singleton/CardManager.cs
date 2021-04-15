@@ -258,7 +258,6 @@ public class CardManager : Singleton<CardManager>
         {
             selectedIdx = (int)card.cardData.dropCardType;
         }
-
         Card newCard = NewCardType(selectedIdx);
         newCard.SetVector(card.vector.x, card.vector.y);
         newCard.transform.SetParent(cardsParents.transform);
@@ -286,7 +285,7 @@ public class CardManager : Singleton<CardManager>
             case 1:
                 return ObjectPoolManager.instance.GetWeapon();
             case 2:
-                return ObjectPoolManager.instance.GetRedPotion();
+                return SelectPotion();
             case 3:
                 return ObjectPoolManager.instance.GetCoin();
             case 4:
@@ -302,5 +301,36 @@ public class CardManager : Singleton<CardManager>
         }
 
         return null;
+    }
+
+    private Potion SelectPotion()
+    {
+        Potion returnPotion = null;
+
+        int randomPotion = Random.Range(0, 6);
+
+        switch (randomPotion)
+        {
+            case 0:
+                returnPotion = ObjectPoolManager.instance.GetBlackPotion();
+                break;
+            case 1:
+                returnPotion = ObjectPoolManager.instance.GetBluePotion();
+                break;
+            case 2:
+                returnPotion = ObjectPoolManager.instance.GetPinkPotion();
+                break;
+            case 3:
+                returnPotion = ObjectPoolManager.instance.GetPurplePotion();
+                break;
+            case 4:
+                returnPotion = ObjectPoolManager.instance.GetRedPotion();
+                break;
+            case 5:
+                returnPotion = ObjectPoolManager.instance.GetYellowPotion();
+                break;
+        }
+
+        return returnPotion;
     }
 }

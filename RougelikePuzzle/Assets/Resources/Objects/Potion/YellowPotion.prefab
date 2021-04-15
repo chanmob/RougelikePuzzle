@@ -89,9 +89,9 @@ GameObject:
   - component: {fileID: 2983342852882698938}
   - component: {fileID: 2983342852882698917}
   - component: {fileID: 2983342852882698939}
-  - component: {fileID: 5475354177146071794}
+  - component: {fileID: 7963974337491459662}
   m_Layer: 0
-  m_Name: Potion
+  m_Name: YellowPotion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -189,7 +189,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &5475354177146071794
+--- !u!114 &7963974337491459662
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -198,15 +198,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 2983342852882698937}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90bdb76021972b54ea12ebe04c656784, type: 3}
+  m_Script: {fileID: 11500000, guid: 192d0316f5770d44181f3dd52715e047, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardData: {fileID: 11400000, guid: 2aeb19fa9fcdb45479fb140fb1afceeb, type: 2}
+  cardData: {fileID: 11400000, guid: 3592beca113f739459963b9b92147759, type: 2}
   _spriteRender: {fileID: 0}
   vector: {x: 0, y: 0}
   maxValue: 0
   value: 0
-  cardType: 2
+  cardType: 3
   moveable: 0
 --- !u!1 &2983342853534721483
 GameObject:

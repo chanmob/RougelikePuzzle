@@ -14,4 +14,9 @@ public class PinkPotion : Potion
 
         InGameManager.instance.player.PlayerHPTextRefresh();
     }
+
+    public override void VirtualReturnCard()
+    {
+        ObjectPoolManager.instance.ReturnPinkPotion(this);
+    }
 }

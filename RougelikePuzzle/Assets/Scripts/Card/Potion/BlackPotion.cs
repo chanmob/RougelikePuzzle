@@ -13,4 +13,9 @@ public class BlackPotion : Potion
 
         InGameManager.instance.player.PlayerHPTextRefresh();
     }
+
+    public override void VirtualReturnCard()
+    {
+        ObjectPoolManager.instance.ReturnBlackPotion(this);
+    }
 }
