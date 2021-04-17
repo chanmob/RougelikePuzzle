@@ -307,9 +307,29 @@ public class CardManager : Singleton<CardManager>
     {
         Potion returnPotion = null;
 
-        int randomPotion = Random.Range(0, 6);
+        int potionLength = potionPercent.Length;
+        int potionidx = -1;
+        int sum = 0;
 
-        switch (randomPotion)
+        for(int i = 0; i < potionLength; i++)
+        {
+            sum += potionPercent[i];
+        }
+
+        int randomValue = Random.Range(0, sum);
+
+        for (int i = 0; i < potionLength; i++)
+        {
+            if(randomValue < potionPercent[i])
+            {
+                potionidx = i;
+                break;
+            }
+
+            randomValue -= potionPercent[i];
+        }
+
+        switch (potionidx)
         {
             case 0:
                 returnPotion = ObjectPoolManager.instance.GetBlackPotion();
