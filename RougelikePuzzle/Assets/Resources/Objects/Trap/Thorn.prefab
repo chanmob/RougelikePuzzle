@@ -204,13 +204,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99f25863e0441fc41b1beda51def5cc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardData: {fileID: 11400000, guid: 7776820f2590db4439a32d5b1b44f94a, type: 2}
+  cardData: {fileID: 11400000, guid: c7345424b1203e942be69f74d5dc3a27, type: 2}
   _spriteRender: {fileID: 0}
   vector: {x: 0, y: 0}
   maxValue: 0
   value: 0
-  cardType: 2
+  cardType: 4
   moveable: 0
+  thronSprites:
+  - {fileID: 21300000, guid: 283fdb71409bda548924f42b2b16e01f, type: 3}
+  - {fileID: 21300000, guid: 68d741d8c61adba4cba4c3ce1ad2dbb4, type: 3}
 --- !u!1 &3819136194187610127
 GameObject:
   m_ObjectHideFlags: 0

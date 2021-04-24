@@ -54,9 +54,9 @@ public class ObjectPoolManager : Singleton<ObjectPoolManager>
 
 
     [Header("Monster")]
-    private Stack<Monster> _stack_Monster;
+    private Stack<Monster> _stack_Monster_Ghost;
     [SerializeField]
-    private Transform _tr_Monster;
+    private Transform _tr_Monster_Ghost;
 
     [Header("Weapon")]
     private Stack<Weapon> _stack_Weapon;
@@ -83,7 +83,7 @@ public class ObjectPoolManager : Singleton<ObjectPoolManager>
         _stack_Coin = new Stack<Coin>();
         _stack_FlameThrower = new Stack<FlameThrower>();
         _stack_FlameThrower2Way = new Stack<FlameThrower2Way>();
-        _stack_Monster = new Stack<Monster>();
+        _stack_Monster_Ghost = new Stack<Monster>();
 
 
         _stack_Blackotion = new Stack<BlackPotion>();
@@ -460,35 +460,35 @@ public class ObjectPoolManager : Singleton<ObjectPoolManager>
     #endregion
 
     #region Monster
-    private void MakeMonster(int count)
+    private void MakeGhostMonster(int count)
     {
         for (int i = 0; i < count; i++)
         {
-            Monster newMonster = Instantiate(DataManager.instance.monster);
+            Monster newMonster = Instantiate(DataManager.instance.ghost);
             newMonster.gameObject.SetActive(false);
-            newMonster.transform.SetParent(_tr_Monster);
+            newMonster.transform.SetParent(_tr_Monster_Ghost);
 
-            _stack_Monster.Push(newMonster);
+            _stack_Monster_Ghost.Push(newMonster);
         }
     }
 
-    public Monster GetMonster()
+    public Monster GetGhostMonster()
     {
-        int cnt = _stack_Monster.Count;
+        int cnt = _stack_Monster_Ghost.Count;
 
         if (cnt == 0)
-            MakeMonster(1);
+            MakeGhostMonster(1);
 
-        return _stack_Monster.Pop();
+        return _stack_Monster_Ghost.Pop();
     }
 
-    public void ReturnMonster(Monster card)
+    public void ReturnGhostMonster(Monster card)
     {
         if (card.gameObject.activeSelf)
             card.gameObject.SetActive(false);
 
-        card.transform.SetParent(_tr_Monster);
-        _stack_Monster.Push(card);
+        card.transform.SetParent(_tr_Monster_Ghost);
+        _stack_Monster_Ghost.Push(card);
     }
     #endregion
 

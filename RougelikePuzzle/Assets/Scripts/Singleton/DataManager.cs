@@ -5,6 +5,8 @@ using UnityEngine;
 public class DataManager : Singleton<DataManager>
 {
     private const string PATH_POTION = "Objects/Potion/";
+    private const string PATH_MONSTER = "Objects/Monster/";
+    private const string PATH_TRAP = "Objects/Trap/";
 
     [Header("Bomb")]
     public Bomb bomb;
@@ -19,7 +21,7 @@ public class DataManager : Singleton<DataManager>
     public FlameThrower2Way flameThrower2Way;
     public Thorn thorn;
 
-    public Monster monster;
+    public Monster ghost;
 
     [Header("Potion")]
     public BlackPotion blackPotion;
@@ -49,8 +51,17 @@ public class DataManager : Singleton<DataManager>
         weapon = Resources.Load<Weapon>("Objects/Weapon");
         coin = Resources.Load<Coin>("Objects/Coin");
         flameThrower = Resources.Load<FlameThrower>("Objects/Flame");
-        thorn = Resources.Load<Thorn>("Objects/Thorn");
-        monster = Resources.Load<Monster>("Objects/Monster");
+        
+        
+        //Trap
+        thorn = Resources.Load<Thorn>(PATH_TRAP + "Thorn");
+        //Trap
+
+
+        //Monster
+        ghost = Resources.Load<Monster>(PATH_MONSTER + "Ghost");
+        //Monster
+
 
         //Potion
         blackPotion = Resources.Load<BlackPotion>(PATH_POTION + "BlackPotion");

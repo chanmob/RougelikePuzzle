@@ -43,7 +43,7 @@ public class Monster : ObjectCard
 
     public override void VirtualReturnCard()
     {
-        ObjectPoolManager.instance.ReturnMonster(this);
+        ObjectPoolManager.instance.ReturnGhostMonster(this);
     }
 
     public virtual void MonsterTurnEvent()

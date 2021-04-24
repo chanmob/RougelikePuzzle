@@ -18,6 +18,6 @@ public class Trap : ObjectCard
 
     public virtual void TriggerTrap()
     {
-
+        
     }
 }

@@ -10,6 +10,7 @@ public static class Define
         Monster,
         Coin,
         Potion,
+        Trap,
         None
     }
 

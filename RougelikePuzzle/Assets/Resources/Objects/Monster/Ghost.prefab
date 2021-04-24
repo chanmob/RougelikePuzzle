@@ -271,7 +271,7 @@ GameObject:
   - component: {fileID: 2187813331755593626}
   - component: {fileID: 2187813331755593621}
   m_Layer: 0
-  m_Name: Monster
+  m_Name: Ghost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -360,8 +360,8 @@ MonoBehaviour:
   vector: {x: 0, y: 0}
   maxValue: 0
   value: 0
-  cardType: 2
-  moveable: 1
+  cardType: 1
+  moveable: 0
 --- !u!61 &2187813331755593621
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -43,7 +43,17 @@ public class ObjectCard : Card
     {
 
     }
+
+    public virtual void VirtualOnEnable()
+    {
+
+    }
     #endregion
+
+    private void OnEnable()
+    {
+        VirtualOnEnable();
+    }
 
     public void OnMouseDown()
     {

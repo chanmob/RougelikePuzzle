@@ -20,4 +20,4 @@ MonoBehaviour:
   randomMaxValue: 0
   fixValue: 0
   cardType: 3
-  dropCardType: 4
+  dropCardType: 5

@@ -281,7 +281,7 @@ public class CardManager : Singleton<CardManager>
         switch (idx)
         {
             case 0:
-                return ObjectPoolManager.instance.GetMonster();
+                return ObjectPoolManager.instance.GetGhostMonster();
             case 1:
                 return ObjectPoolManager.instance.GetWeapon();
             case 2:

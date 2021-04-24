@@ -19,3 +19,5 @@ MonoBehaviour:
   randomMinValue: 1
   randomMaxValue: 2
   fixValue: 3
+  cardType: 4
+  dropCardType: 5
