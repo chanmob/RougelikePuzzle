@@ -18,6 +18,6 @@ public class Coin : ObjectCard
 
     public override void VirtualReturnCard()
     {
-        ObjectPoolManager.instance.ReturnCoin(this);
+        ObjectPoolManager.instance.ReturnGoldCoin(this);
     }
 }

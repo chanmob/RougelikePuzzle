@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f6bdbd79c1abed34ab5b4617e6365b2b, type: 3}
-  m_Name: Coin
+  m_Name: GoldCoin
   m_EditorClassIdentifier: 
-  cardName: "\uCF54\uC778"
+  cardName: "\uAE08\uD654"
   cardInfo: 
-  cardSprite: {fileID: 21300000, guid: 57ad297e094a560419c48a5f6a179666, type: 3}
+  cardSprite: {fileID: 21300000, guid: 0414030e450db2242bbbf1412098f4e3, type: 3}
   isRandom: 0
   randomMinValue: 0
   randomMaxValue: 0
   fixValue: 0
-  cardType: 4
+  cardType: 2
   dropCardType: 5

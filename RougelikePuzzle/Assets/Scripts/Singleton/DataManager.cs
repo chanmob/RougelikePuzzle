@@ -7,6 +7,7 @@ public class DataManager : Singleton<DataManager>
     private const string PATH_POTION = "Objects/Potion/";
     private const string PATH_MONSTER = "Objects/Monster/";
     private const string PATH_TRAP = "Objects/Trap/";
+    private const string PATH_COIN = "Objects/Coin/";
 
     [Header("Bomb")]
     public Bomb bomb;
@@ -15,7 +16,8 @@ public class DataManager : Singleton<DataManager>
     [Header("Weapon")]
     public Weapon weapon;
 
-    public Coin coin;
+    [Header("Coin")]
+    public Coin goldCoin;
 
     public FlameThrower flameThrower;
     public FlameThrower2Way flameThrower2Way;
@@ -49,13 +51,17 @@ public class DataManager : Singleton<DataManager>
         cardReset = Resources.Load<CardReset>("Objects/CardReset");
         changeCardPosition = Resources.Load<ChangeCardPosition>("Objects/ChangeCardPosition");
         weapon = Resources.Load<Weapon>("Objects/Weapon");
-        coin = Resources.Load<Coin>("Objects/Coin");
         flameThrower = Resources.Load<FlameThrower>("Objects/Flame");
         
         
         //Trap
         thorn = Resources.Load<Thorn>(PATH_TRAP + "Thorn");
         //Trap
+
+
+        //Coin
+        goldCoin = Resources.Load<Coin>(PATH_COIN + "GoldCoin");
+        //Coin
 
 
         //Monster

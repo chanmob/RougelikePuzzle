@@ -287,7 +287,7 @@ public class CardManager : Singleton<CardManager>
             case 2:
                 return SelectPotion();
             case 3:
-                return ObjectPoolManager.instance.GetCoin();
+                return ObjectPoolManager.instance.GetGoldCoin();
             case 4:
                 return ObjectPoolManager.instance.GetChangeCardPosition();
             case 5:

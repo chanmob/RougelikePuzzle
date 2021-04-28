@@ -14,6 +14,11 @@ public class ObjectPoolManager : Singleton<ObjectPoolManager>
     [SerializeField]
     private Transform _tr_ChangeCardPosition;
 
+    [Header("Coin")]
+    private Stack<Coin> _stack_GoldCoin;
+    [SerializeField]
+    private Transform _tr_GoldCoin;
+
     [Header("Trap")]
     private Stack<FlameThrower> _stack_FlameThrower;
     [SerializeField]
@@ -68,11 +73,6 @@ public class ObjectPoolManager : Singleton<ObjectPoolManager>
     [SerializeField]
     private Transform _tr_Bomb;
 
-    [Header("Coin")]
-    private Stack<Coin> _stack_Coin;
-    [SerializeField]
-    private Transform _tr_Coin;
-
     protected override void OnAwake()
     {
         base.OnAwake();
@@ -80,7 +80,6 @@ public class ObjectPoolManager : Singleton<ObjectPoolManager>
         _stack_Bomb = new Stack<Bomb>();
         _stack_CardReset = new Stack<CardReset>();
         _stack_ChangeCardPosition = new Stack<ChangeCardPosition>();
-        _stack_Coin = new Stack<Coin>();
         _stack_FlameThrower = new Stack<FlameThrower>();
         _stack_FlameThrower2Way = new Stack<FlameThrower2Way>();
         _stack_Monster_Ghost = new Stack<Monster>();
@@ -92,8 +91,9 @@ public class ObjectPoolManager : Singleton<ObjectPoolManager>
         _stack_PurplePotion = new Stack<PurplePotion>();
         _stack_RedPotion = new Stack<RedPotion>();
         _stack_YellowPotion = new Stack<YellowPotion>();
-        
-        
+
+        _stack_GoldCoin = new Stack<Coin>();
+
         _stack_Thorn = new Stack<Thorn>();
         _stack_Weapon = new Stack<Weapon>();
     }
@@ -559,35 +559,36 @@ public class ObjectPoolManager : Singleton<ObjectPoolManager>
     #endregion
 
     #region Coin
-    private void MakeCoin(int count)
+    private void MakeGoldCoin(int count)
     {
         for (int i = 0; i < count; i++)
         {
-            Coin newCoin = Instantiate(DataManager.instance.coin);
+            Coin newCoin = Instantiate(DataManager.instance.goldCoin);
             newCoin.gameObject.SetActive(false);
-            newCoin.transform.SetParent(_tr_Coin);
+            newCoin.transform.SetParent(_tr_GoldCoin);
 
-            _stack_Coin.Push(newCoin);
+            _stack_GoldCoin.Push(newCoin);
         }
     }
 
-    public Coin GetCoin()
+    public Coin GetGoldCoin()
     {
-        int cnt = _stack_Coin.Count;
+        int cnt = _stack_GoldCoin.Count;
 
         if (cnt == 0)
-            MakeCoin(1);
+            MakeGoldCoin(1);
 
-        return _stack_Coin.Pop();
+        return _stack_GoldCoin.Pop();
     }
 
-    public void ReturnCoin(Coin card)
+    public void ReturnGoldCoin(Coin coin)
     {
-        if (card.gameObject.activeSelf)
-            card.gameObject.SetActive(false);
+        if (coin.gameObject.activeSelf)
+            coin.gameObject.SetActive(false);
 
-        card.transform.SetParent(_tr_Coin);
-        _stack_Coin.Push(card);
+        coin.transform.SetParent(_tr_GoldCoin);
+        _stack_GoldCoin.Push(coin);
     }
+
     #endregion
 }
