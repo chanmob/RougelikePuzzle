@@ -23,7 +23,9 @@ public class DataManager : Singleton<DataManager>
     public FlameThrower2Way flameThrower2Way;
     public Thorn thorn;
 
+    [Header("Monster")]
     public Monster ghost;
+    public Slime slime;
 
     [Header("Potion")]
     public BlackPotion blackPotion;
@@ -66,6 +68,7 @@ public class DataManager : Singleton<DataManager>
 
         //Monster
         ghost = Resources.Load<Monster>(PATH_MONSTER + "Ghost");
+        slime = Resources.Load<Slime>(PATH_MONSTER + "Slime");
         //Monster
 
 

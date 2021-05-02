@@ -62,6 +62,9 @@ public class ObjectPoolManager : Singleton<ObjectPoolManager>
     private Stack<Monster> _stack_Monster_Ghost;
     [SerializeField]
     private Transform _tr_Monster_Ghost;
+    private Stack<Slime> _stack_Monster_Slime;
+    [SerializeField]
+    private Transform _tr_Monster_Slime;
 
     [Header("Weapon")]
     private Stack<Weapon> _stack_Weapon;
@@ -82,8 +85,9 @@ public class ObjectPoolManager : Singleton<ObjectPoolManager>
         _stack_ChangeCardPosition = new Stack<ChangeCardPosition>();
         _stack_FlameThrower = new Stack<FlameThrower>();
         _stack_FlameThrower2Way = new Stack<FlameThrower2Way>();
+        
         _stack_Monster_Ghost = new Stack<Monster>();
-
+        _stack_Monster_Slime = new Stack<Slime>();
 
         _stack_Blackotion = new Stack<BlackPotion>();
         _stack_BluePotion = new Stack<BluePotion>();
@@ -489,6 +493,37 @@ public class ObjectPoolManager : Singleton<ObjectPoolManager>
 
         card.transform.SetParent(_tr_Monster_Ghost);
         _stack_Monster_Ghost.Push(card);
+    }
+
+    private void MakeSlimeMonster(int count)
+    {
+        for (int i = 0; i < count; i++)
+        {
+            Slime newMonster = Instantiate(DataManager.instance.slime);
+            newMonster.gameObject.SetActive(false);
+            newMonster.transform.SetParent(_tr_Monster_Slime);
+
+            _stack_Monster_Slime.Push(newMonster);
+        }
+    }
+
+    public Slime GetSlimeMonster()
+    {
+        int cnt = _stack_Monster_Slime.Count;
+
+        if (cnt == 0)
+            MakeSlimeMonster(1);
+
+        return _stack_Monster_Slime.Pop();
+    }
+
+    public void ReturnSlimeMonster(Slime card)
+    {
+        if (card.gameObject.activeSelf)
+            card.gameObject.SetActive(false);
+
+        card.transform.SetParent(_tr_Monster_Slime);
+        _stack_Monster_Slime.Push(card);
     }
     #endregion
 

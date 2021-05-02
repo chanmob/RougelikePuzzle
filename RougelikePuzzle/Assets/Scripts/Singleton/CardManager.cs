@@ -281,7 +281,7 @@ public class CardManager : Singleton<CardManager>
         switch (idx)
         {
             case 0:
-                return ObjectPoolManager.instance.GetGhostMonster();
+                return SelectMonster();
             case 1:
                 return ObjectPoolManager.instance.GetWeapon();
             case 2:
@@ -352,5 +352,44 @@ public class CardManager : Singleton<CardManager>
         }
 
         return returnPotion;
+    }
+
+    private Monster SelectMonster()
+    {
+        Monster returnMonster = null;
+
+        int monsterLength = monsterPercent.Length;
+        int monsterIdx = -1;
+        int sum = 0;
+
+        for (int i = 0; i < monsterLength; i++)
+        {
+            sum += monsterPercent[i];
+        }
+
+        int randomValue = Random.Range(0, sum);
+
+        for (int i = 0; i < monsterLength; i++)
+        {
+            if (randomValue < monsterPercent[i])
+            {
+                monsterIdx = i;
+                break;
+            }
+
+            randomValue -= monsterPercent[i];
+        }
+
+        switch (monsterIdx)
+        {
+            case 0:
+                returnMonster = ObjectPoolManager.instance.GetGhostMonster();
+                break;
+            case 1:
+                returnMonster = ObjectPoolManager.instance.GetSlimeMonster();
+                break;
+        }
+
+        return returnMonster;
     }
 }
