@@ -65,6 +65,9 @@ public class ObjectPoolManager : Singleton<ObjectPoolManager>
     private Stack<Slime> _stack_Monster_Slime;
     [SerializeField]
     private Transform _tr_Monster_Slime;
+    private Stack<Imp> _stack_Monster_Imp;
+    [SerializeField]
+    private Transform _tr_Monster_Imp;
 
     [Header("Weapon")]
     private Stack<Weapon> _stack_Weapon;
@@ -88,6 +91,7 @@ public class ObjectPoolManager : Singleton<ObjectPoolManager>
         
         _stack_Monster_Ghost = new Stack<Monster>();
         _stack_Monster_Slime = new Stack<Slime>();
+        _stack_Monster_Imp = new Stack<Imp>();
 
         _stack_Blackotion = new Stack<BlackPotion>();
         _stack_BluePotion = new Stack<BluePotion>();
@@ -524,6 +528,37 @@ public class ObjectPoolManager : Singleton<ObjectPoolManager>
 
         card.transform.SetParent(_tr_Monster_Slime);
         _stack_Monster_Slime.Push(card);
+    }
+
+    private void MakeImpMonster(int count)
+    {
+        for (int i = 0; i < count; i++)
+        {
+            Imp newMonster = Instantiate(DataManager.instance.imp);
+            newMonster.gameObject.SetActive(false);
+            newMonster.transform.SetParent(_tr_Monster_Slime);
+
+            _stack_Monster_Imp.Push(newMonster);
+        }
+    }
+
+    public Imp GetImpMonster()
+    {
+        int cnt = _stack_Monster_Imp.Count;
+
+        if (cnt == 0)
+            MakeImpMonster(1);
+
+        return _stack_Monster_Imp.Pop();
+    }
+
+    public void ReturnImpMonster(Imp card)
+    {
+        if (card.gameObject.activeSelf)
+            card.gameObject.SetActive(false);
+
+        card.transform.SetParent(_tr_Monster_Imp);
+        _stack_Monster_Imp.Push(card);
     }
     #endregion
 

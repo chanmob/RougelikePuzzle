@@ -26,6 +26,7 @@ public class DataManager : Singleton<DataManager>
     [Header("Monster")]
     public Monster ghost;
     public Slime slime;
+    public Imp imp;
 
     [Header("Potion")]
     public BlackPotion blackPotion;
@@ -69,6 +70,7 @@ public class DataManager : Singleton<DataManager>
         //Monster
         ghost = Resources.Load<Monster>(PATH_MONSTER + "Ghost");
         slime = Resources.Load<Slime>(PATH_MONSTER + "Slime");
+        imp = Resources.Load<Imp>(PATH_MONSTER + "Imp");
         //Monster
 
 

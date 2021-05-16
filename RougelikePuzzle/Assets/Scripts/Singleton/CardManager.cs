@@ -388,6 +388,9 @@ public class CardManager : Singleton<CardManager>
             case 1:
                 returnMonster = ObjectPoolManager.instance.GetSlimeMonster();
                 break;
+            case 2:
+                returnMonster = ObjectPoolManager.instance.GetImpMonster();
+                break;
         }
 
         return returnMonster;

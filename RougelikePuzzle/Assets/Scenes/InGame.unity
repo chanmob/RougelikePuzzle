@@ -1758,7 +1758,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dontDestroyOnLoad: 0
   categoryPercent: 0a0000000a0000000a0000000a0000000a0000000a0000000a0000000a0000000a000000
-  monsterPercent: 0a0000000a000000
+  monsterPercent: 0a0000000a0000000a000000
   weaponPercent: 
   potionPercent: 0a0000000a0000000a0000000a0000000a0000000a000000
   coinPercent: 
@@ -2243,6 +2243,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 841892949}
   m_CullTransparentMesh: 0
+--- !u!1 &849881858
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 849881859}
+  m_Layer: 0
+  m_Name: Imp
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &849881859
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 849881858}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1111545541}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &872171586
 GameObject:
   m_ObjectHideFlags: 0
@@ -3109,6 +3139,7 @@ Transform:
   m_Children:
   - {fileID: 545309305}
   - {fileID: 207806256}
+  - {fileID: 849881859}
   m_Father: {fileID: 1233088920}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3264,6 +3295,7 @@ MonoBehaviour:
   _tr_YellowPotion: {fileID: 1303457117}
   _tr_Monster_Ghost: {fileID: 545309305}
   _tr_Monster_Slime: {fileID: 207806256}
+  _tr_Monster_Imp: {fileID: 849881859}
   _tr_Weapon: {fileID: 1352456337}
   _tr_Bomb: {fileID: 1434720260}
 --- !u!4 &1233088920
@@ -4220,6 +4252,7 @@ MonoBehaviour:
   thorn: {fileID: 0}
   ghost: {fileID: 0}
   slime: {fileID: 0}
+  imp: {fileID: 0}
   blackPotion: {fileID: 0}
   bluePotion: {fileID: 0}
   pinkPotion: {fileID: 0}
