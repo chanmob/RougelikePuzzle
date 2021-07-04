@@ -20,7 +20,7 @@ public class UI_OutGamePageControl : MonoBehaviour
             uiPagePositions[i] = uiPages[i].transform.position;
 		}
 
-        //ChangePageNoTween(2);
+        ChangePageNoTween(2);
     }
 
     public void ChangePage(int TargetPage) {
